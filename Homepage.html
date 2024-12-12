@@ -1,0 +1,495 @@
+<html>
+
+<head>
+    <title>
+        Sifaxfx
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&amp;display=swap" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            background-color: black;
+            height: 100%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: black;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 300;
+        }
+
+        .navbar a:hover {
+            color: #00bcd4;
+        }
+
+        .navbar .brand {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .navbar .appointment {
+            border: 1px solid #00bcd4;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar .appointment:hover {
+            background-color: #00bcd4;
+            color: black;
+        }
+
+        .navbar .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .navbar .links {
+            display: flex;
+        }
+
+        .hero {
+            position: relative;
+            text-align: center;
+            color: white;
+            height: calc(100vh - 80px);
+            /* Adjusting for navbar height */
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero .content h1 {
+            font-size: 60px;
+            margin: 0;
+        }
+
+        .hero .content p {
+            font-size: 24px;
+            margin: 10px 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .navbar .links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .navbar .links a {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .navbar .menu-icon {
+                display: block;
+            }
+
+            .hero .content h1 {
+                font-size: 40px;
+            }
+
+            .hero .content p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="brand">
+            Sifaxfx
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars">
+            </i>
+        </div>
+        <div class="links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">How We Works</a>
+        </div>
+        <a class="appointment" href="#">
+            Book Appointment
+        </a>
+    </div>
+    <div class="hero">
+        <img alt="Office interior with a large table and chairs, and a sofa in the background" height="1080"
+            src="hero_image.jpeg" width="1920" />
+        <div class="content">
+            <h1>
+                Automate your trading
+            </h1>
+            <p>
+                Revolutionize your trading with automation
+            </p>
+        </div>
+    </div>
+
+    <div class="hero-section1">
+        <h1>Empowering traders</h1>
+        <h2>Your partner in automated trading</h2>
+        <p>At Sifax, we empower traders to navigate the financial markets with confidence and precision. We combine financial expertise with cutting-edge technology to create automated trading strategies that are accessible for everyone.</p>
+        <p>Our mission is to enhance decision-making, minimize emotional biases, and optimize performance through innovative solutions.</p>
+        <a href="#" class="cta-btn">Schedule appointment</a>
+    </div>
+
+    <div class="gallery">
+        <img alt="Modern office interior with glass walls and concrete floor" height="300" onclick="openModal();currentSlide(1)" src="https://storage.googleapis.com/a1aa/image/kehhGycExfqeOo7qcqVsf2GhhOW4hsZQzkjs6CPlGMYqKlkPB.jpg" width="300"/>
+        <img alt="Night view of a city with illuminated skyscrapers" height="300" onclick="openModal();currentSlide(2)" src="https://storage.googleapis.com/a1aa/image/nl7uhG6GEhLAKxH1bBdN0IfIoVVZE5PC9e9irGy9eTdblSynA.jpg" width="300"/>
+        <img alt="Black and white aerial view of a city with tall buildings" height="300" onclick="openModal();currentSlide(3)" src="https://storage.googleapis.com/a1aa/image/mappmZt4DNrLA9zaU0FzjvdPMqIACITxVIAw8hvQZhGrUSeJA.jpg" width="300"/>
+       </div>
+       <div class="modal" id="myModal">
+        <span class="close" onclick="closeModal()">
+         &times;
+        </span>
+        <div class="modal-content">
+         <div class="mySlides">
+          <div class="numbertext">
+           1 / 3
+          </div>
+          <img alt="Modern office interior with glass walls and concrete floor" src="https://storage.googleapis.com/a1aa/image/kehhGycExfqeOo7qcqVsf2GhhOW4hsZQzkjs6CPlGMYqKlkPB.jpg"/>
+         </div>
+         <div class="mySlides">
+          <div class="numbertext">
+           2 / 3
+          </div>
+          <img alt="Night view of a city with illuminated skyscrapers" src="https://storage.googleapis.com/a1aa/image/nl7uhG6GEhLAKxH1bBdN0IfIoVVZE5PC9e9irGy9eTdblSynA.jpg"/>
+         </div>
+         <div class="mySlides">
+          <div class="numbertext">
+           3 / 3
+          </div>
+          <img alt="Black and white aerial view of a city with tall buildings" src="https://storage.googleapis.com/a1aa/image/mappmZt4DNrLA9zaU0FzjvdPMqIACITxVIAw8hvQZhGrUSeJA.jpg"/>
+         </div>
+         <a class="prev" onclick="plusSlides(-1)">
+          &#10094;
+         </a>
+         <a class="next" onclick="plusSlides(1)">
+          &#10095;
+         </a>
+         <div class="number" id="number">
+          1 / 3
+         </div>
+        </div>
+       </div>
+    <script>
+        function toggleMenu() {
+            const links = document.querySelector('.navbar .links');
+            if (links.style.display === 'flex') {
+                links.style.display = 'none';
+            } else {
+                links.style.display = 'flex';
+            }
+        }
+
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var numberText = document.getElementById("number");
+            if (n > slides.length) {slideIndex = slides.length}
+            if (n < 1) {slideIndex = 1}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex-1].style.display = "block";
+            numberText.innerHTML = slideIndex + " / " + slides.length;
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+  
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Image Gallery Modal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .gallery-container {
+            display: flex;
+            height: 100%;
+        }
+        .thumbnail-sidebar {
+            width: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+        }
+        .thumbnail-sidebar img {
+            width: 80px;
+            height: 80px;
+            margin: 10px 0;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .thumbnail-sidebar img.active {
+            border-color: red;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 80%;
+            max-height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            margin: 20px 0;
+        }
+        .navigation {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        .navigation.left {
+            left: 10px;
+        }
+        .navigation.right {
+            right: 10px;
+        }
+        .control-bar {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close {
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        .image-counter {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <div class="thumbnail-sidebar">
+            <img src="https://placehold.co/80x80" alt="Thumbnail of a modern office interior" onclick="openModal(0)"/>
+            <img src="https://placehold.co/80x80" alt="Thumbnail of a city skyline at night" onclick="openModal(1)"/>
+            <img src="https://placehold.co/80x80" alt="Thumbnail of an aerial view of a city with many skyscrapers in black and white" onclick="openModal(2)"/>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="control-bar">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="image-counter" id="imageCounter">1 / 3</div>
+            </div>
+            <i class="fas fa-chevron-left navigation left" onclick="changeSlide(-1)"></i>
+            <img id="modalImage" src="https://placehold.co/800x600" alt="Aerial view of a city with many skyscrapers in black and white"/>
+            <i class="fas fa-chevron-right navigation right" onclick="changeSlide(1)"></i>
+        </div>
+    </div>
+
+    <div class="container2">
+        <h2>Select a date and time <span style="color: red;">*</span></h2>
+        <div class="date-picker">
+            <div class="date-picker-header">
+                <span id="current-date"></span>
+            </div>
+            <div class="calendar">
+                <div class="day" id="prev-week"><i class="fas fa-chevron-left"></i></div>
+                <div class="day" id="day-1"></div>
+                <div class="day" id="day-2"></div>
+                <div class="day" id="day-3"></div>
+                <div class="day" id="day-4"></div>
+                <div class="day" id="day-5"></div>
+                <div class="day" id="day-6"></div>
+                <div class="day" id="day-7"></div>
+                <div class="day" id="next-week"><i class="fas fa-chevron-right"></i></div>
+            </div>
+            <div class="time-slots">
+                <div class="slot">
+                    <span>Afternoon</span>
+                    <button>4:30-5:00 pm</button>
+                    <button>5:00-5:30 pm</button>
+                    <button>5:30-6:00 pm</button>
+                </div>
+                <div class="slot">
+                    <span>Evening</span>
+                    <button>6:00-6:30 pm</button>
+                    <button>6:30-7:00 pm</button>
+                    <button>7:00-7:30 pm</button>
+                    <button>7:30-8:00 pm</button>
+                    <button>8:00-8:30 pm</button>
+                    <button>8:30-9:00 pm</button>
+                    <button>9:00-9:30 pm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentSlide = 0;
+        const images = [
+            "https://placehold.co/800x600",
+            "https://placehold.co/800x600",
+            "https://placehold.co/800x600"
+        ];
+
+        function openModal(index) {
+            currentSlide = index;
+            document.getElementById('myModal').style.display = "flex";
+            showSlide(currentSlide);
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        function changeSlide(n) {
+            currentSlide += n;
+            if (currentSlide >= images.length) {
+                currentSlide = 0;
+            } else if (currentSlide < 0) {
+                currentSlide = images.length - 1;
+            }
+            showSlide(currentSlide);
+        }
+
+        function showSlide(index) {
+            document.getElementById('modalImage').src = images[index];
+            document.getElementById('imageCounter').innerText = (index + 1) + " / " + images.length;
+        }
+    </script>
+
+<script>
+    const currentDateElement = document.getElementById('current-date');
+    const daysElements = [
+        document.getElementById('day-1'),
+        document.getElementById('day-2'),
+        document.getElementById('day-3'),
+        document.getElementById('day-4'),
+        document.getElementById('day-5'),
+        document.getElementById('day-6'),
+        document.getElementById('day-7')
+    ];
+    const prevWeekElement = document.getElementById('prev-week');
+    const nextWeekElement = document.getElementById('next-week');
+
+    let currentDate = new Date();
+
+    function updateCalendar() {
+        const startOfWeek = new Date(currentDate);
+        startOfWeek.setDate(currentDate.getDate() - currentDate.getDay() + 1);
+
+        currentDateElement.textContent = startOfWeek.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        daysElements.forEach((dayElement, index) => {
+            const dayDate = new Date(startOfWeek);
+            dayDate.setDate(startOfWeek.getDate() + index);
+            dayElement.textContent = dayDate.getDate();
+            dayElement.classList.remove('selected');
+            if (dayDate.toDateString() === currentDate.toDateString()) {
+                dayElement.classList.add('selected');
+            }
+            dayElement.onclick = () => {
+                currentDate = dayDate;
+                updateCalendar();
+            };
+        });
+    }
+
+    prevWeekElement.onclick = () => {
+        currentDate.setDate(currentDate.getDate() - 7);
+        updateCalendar();
+    };
+
+    nextWeekElement.onclick = () => {
+        currentDate.setDate(currentDate.getDate() + 7);
+        updateCalendar();
+    };
+
+    updateCalendar();
+</script>
+</body>
+</html>
