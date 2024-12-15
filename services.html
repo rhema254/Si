@@ -1,0 +1,429 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </link>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #121414;
+            font-family: "Raleway", sans-serif;
+            
+        }
+
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* padding: 20px 50px; */
+            padding: 20px 13.5rem;
+            background-color: black;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 16px;
+            font-weight: 300;
+            font-size: 15px;
+        }
+
+        .navbar a:hover {
+            border-bottom: solid 2px #ffffff;
+        }
+
+        .navbar .brand {
+            font-size: 19px;
+            font-weight: 300;
+            color: white;
+        }
+
+        .navbar .appointment {
+            border: 1px solid #ffffff;
+            padding: 10px 30px;
+            transition: background-color 0.3s, color 0.3s;
+            font-weight: 300;
+            line-height: 1.25;
+            letter-spacing: 2px;
+            text-transform: none;
+            font-size: 16px;
+            border-width:1px;
+        
+            
+
+        }
+
+        .navbar .appointment:hover {
+            background-color: #c19957;
+            color: black;
+            border: none;
+        }
+
+        .navbar .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .navbar .links {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .navbar .links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .navbar .links a {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .navbar .menu-icon {
+                display: block;
+            }
+        }
+
+        /* .card {
+            position: relative;
+            overflow: hidden;
+        }
+        .card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .card:hover .overlay {
+            opacity: 1;
+        }
+        .card .overlay p,
+        .card .overlay a {
+            display: none;
+        }
+        .card:hover .overlay p,
+        .card:hover .overlay a {
+            display: block;
+        }
+        .card .overlay a {
+            border: 1px solid #ffffff;
+            padding: 10px 20px;
+            transition: background-color 0.3s, color 0.3s;
+            margin-top: 10px;
+        }
+        .card .overlay a:hover {
+            background-color: #c19957;
+            color: black;
+            border: none;
+        } */
+
+        .hover-overlay {
+            transition: transform 0.6s ease-in-out, opacity 0.6s ease-out;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .card:hover .hover-overlay {
+            transition:transform 0.6s ease-in, opacity 0;
+            transform: translateY(0);
+            opacity: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+            gap: 5%;
+            padding-top: 30%;
+
+            a {
+                margin-top: 10%;
+                border: 1px solid #ffffff;
+                padding: 10px 20px;
+                transition: background-color 0.3s, color 0.3s;
+                text-decoration: none;
+                color: white;
+            }
+
+            a:hover {
+                background-color: #c19957;
+                color: black;
+                border: none;
+            }
+
+        }
+        .card:hover .floating-label {
+
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+        .card a {
+                margin-top: 10%;
+                border: 1px solid #ffffff;
+                padding: 10px 20px;
+                transition: background-color 0.3s, color 0.3s;
+                text-decoration: none;
+                color: white;
+            }
+
+        .card a:hover {
+                background-color: #c19957;
+                color: black;
+                border: none;
+            }
+
+
+        .font-raleway {
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            
+        }
+
+        .font-raleway-small {
+            font-family: "Raleway", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+            color:#dbdbdb;
+        }
+      
+    </style>
+    <script>
+        function toggleMenu() {
+            const links = document.querySelector('.navbar .links');
+            links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
+</head>
+
+<body class="services-container">
+    <div class="navbar">
+        <div class="brand">SifaFx</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="links">
+            <a href="Homepage.html">Home</a>
+            <a href="#">About</a>
+            <a href="services.html">Services</a>
+            <a href="#">How We Work</a>
+        </div>
+        <a class="appointment" href="#">Book Appointment</a>
+    </div>
+    <div class="container mx-auto py-36 px-36">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            <!-- Card Template -->
+            <div class="relative group card overflow-hidden rounded-lg shadow-lg h-80">
+                
+                <img alt="Service Image" class="w-full h-full object-cover"
+                    src="Assets/Service1.jpeg">
+
+                <div
+                    class="absolute bottom-0 left-0 right-0  bg-black bg-opacity-70 text-white px-10 py-7 rounded text-center font-raleway text-2xl floating-label">
+                    Strategy Automation
+                </div>
+
+                <!-- Overlay Content -->
+                <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white text-center p-4 hover-overlay">
+                    <p class="text-2xl font-raleway "> Strategy Automation</p>
+
+                    <p class="font-raleway-small">From $200</p>
+                    <a href="#" class="text-blue-400 underline">Read More</a>
+                </div>
+            </div>
+
+            <div class="relative group card overflow-hidden rounded-lg shadow-lg h-80">
+                
+                <img alt="Service Image" class="w-full h-full object-cover"
+                    src="Assets/Service2.jpeg">
+
+                
+                <div
+                    class="absolute bottom-0 left-0 right-0  bg-black bg-opacity-70 text-white px-10 py-7 rounded text-center font-raleway text-2xl floating-label">
+                    Multi-Platform Development
+                </div>
+
+                <!-- Overlay Content -->
+                <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-80 text-white text-center p-4 hover-overlay">
+                    <p class="text-2xl font-raleway "> Multi-Platform Development</p>
+
+                    <p class="font-raleway-small">From $200</p>
+                    <a href="#" class="text-blue-400 underline">Read More</a>
+                </div>
+            </div>
+
+            <div class="relative group card overflow-hidden rounded-lg shadow-lg h-80">
+                
+                <img alt="Service Image" class="w-full h-full object-cover"
+                    src="Assets/Service3.jpeg">
+
+                
+                <div
+                    class="absolute bottom-0 left-0 right-0  bg-black bg-opacity-70 text-white px-10 py-7 rounded text-center font-raleway text-2xl floating-label">
+                    Testing & Optimization
+                </div>
+
+                <!-- Overlay Content -->
+                <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-80 text-white text-center p-4 hover-overlay">
+                    <p class="text-2xl font-raleway "> Testing & Optimization </p>
+
+                    <p class="font-raleway-small">From $300 per year</p>
+                    <a href="#" class="text-blue-400 underline">Read More</a>
+                </div>
+            </div>
+
+            <div class="relative group card overflow-hidden rounded-lg shadow-lg h-80">
+                
+                <img alt="Service Image" class="w-full h-full object-cover"
+                    src="Assets/Service4.jpeg">
+
+                
+                <div
+                    class="absolute bottom-0 left-0 right-0  bg-black bg-opacity-70 text-white px-10 py-7 rounded text-center font-raleway text-2xl floating-label">
+                    Risk Management
+                </div>
+
+                <!-- Overlay Content -->
+                <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-80 text-white text-center p-4 hover-overlay">
+                    <p class="text-2xl font-raleway "> Risk Management</p>
+
+                    <p class="font-raleway-small">From $200</p>
+                    <a href="#" class="text-blue-400 underline">Read More</a>
+                </div>
+            </div>
+
+            <div class="relative group card overflow-hidden rounded-lg shadow-lg h-80">
+                
+                <img alt="Service Image" class="w-full h-full object-cover"
+                    src="Assets/Service5.jpeg"/>
+                
+                <div
+                    class="absolute bottom-0 left-0 right-0  bg-black bg-opacity-70 text-white px-10 py-7 rounded text-center font-raleway text-2xl floating-label">
+                    Technical Support
+                </div>
+
+                <!-- Overlay Content -->
+                <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-80 text-white text-center p-4 hover-overlay">
+                    <p class="text-2xl font-raleway ">Technical Support</p>
+
+                    <p class="font-raleway-small">From $100</p>
+                    <a href="#" class="text-blue-400 underline">Read More</a>
+                </div>
+            </div>
+
+            <div class="relative group card overflow-hidden rounded-lg shadow-lg h-80">
+                
+                <img alt="Service Image" class="w-full h-full object-cover"
+                    src="Assets/Service6.jpeg">
+
+                
+                <div
+                    class="absolute bottom-0 left-0 right-0  bg-black bg-opacity-70 text-white px-10 py-7 rounded text-center font-raleway text-2xl floating-label">
+                    API Integration Services
+                </div>
+
+                <!-- Overlay Content -->
+                <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-80 text-white text-center p-4 hover-overlay">
+                    <p class="text-2xl font-raleway "> API Integration Services</p>
+
+                    <p class="font-raleway-small">From $800</p>
+                    <a href="#" class="text-blue-400 underline">Read More</a>
+                </div>
+            </div>
+
+            <div class="relative group card overflow-hidden rounded-lg shadow-lg h-80">
+                
+                <img alt="Service Image" class="w-full h-full object-cover"
+                    src="Assets/Service7.jpeg">
+
+                
+                <div
+                    class="absolute bottom-0 left-0 right-0  bg-black bg-opacity-70 text-white px-10 py-7 rounded text-center font-raleway text-2xl floating-label">
+                    Machine Learnig Enhancement
+                </div>
+
+                <!-- Overlay Content -->
+                <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-80 text-white text-center p-4 hover-overlay">
+                    <p class="text-2xl font-raleway "> Machine Learnig Enhancement</p>
+
+                    <p class="font-raleway-small">From $7,500</p>
+                    <a href="#" class="text-blue-400 underline">Read More</a>
+                </div>
+            </div>
+
+            <div class="relative group card overflow-hidden rounded-lg shadow-lg h-80">
+                
+                <img alt="Service Image" class="w-full h-full object-cover"
+                    src="Assets/Service8.jpeg">
+
+                
+                <div
+                    class="absolute bottom-0 left-0 right-0  bg-black bg-opacity-70 text-white px-10 py-7 rounded text-center font-raleway text-2xl floating-label">
+                    Market Data Analysis Tools
+                </div>
+
+                <!-- Overlay Content -->
+                <div
+                    class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-80 text-white text-center p-4 hover-overlay">
+                    <p class="text-2xl font-raleway "> Market Data Analysis Tools</p>
+
+                    <p class="font-raleway-small">From $200</p>
+                    <a href="#" class="text-blue-400 underline">Read More</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer class="bg-black text-white font-sans max-h-xl">
+        <div class="flex flex-col items-center justify-center">
+            <div class="flex flex-col md:flex-row justify-between w-full max-w-4xl px-4 py-8">
+                <div class="text-center md:text-left mb-8 md:mb-0">
+                    <h1 class="text-lg">SifaFx</h1>
+                </div>
+                <div class="text-center mb-8 md:mb-0">
+                    <h1 class="text-lg">Location</h1>
+                    <p>Nairobi KE</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <h1 class="text-lg">Reach out</h1>
+                    <p><a href="mailto:admin@sifax.com" class="underline">admin@sifax.com</a></p>
+                    <p><a href="tel:+254717820960" class="underline">+254717820960</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
