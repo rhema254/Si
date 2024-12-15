@@ -36,9 +36,7 @@ body{
     display: inline-block;
     margin-top: 20px;
 }
-.hero-section1 .cta-btn:hover {
-    color: #00ff00;
-}
+
 @media (max-width: 768px) {
     .hero-section1 h1 {
         font-size: 48px;
