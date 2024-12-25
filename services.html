@@ -18,128 +18,6 @@
             
         }
 
-        
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            /* padding: 20px 50px; */
-            padding: 20px 13.5rem;
-            background-color: black;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            margin: 0 16px;
-            font-weight: 300;
-            font-size: 15px;
-        }
-
-        .navbar a:hover {
-            border-bottom: solid 2px #ffffff;
-        }
-
-        .navbar .brand {
-            font-size: 19px;
-            font-weight: 300;
-            color: white;
-        }
-
-        .navbar .appointment {
-            border: 1px solid #ffffff;
-            padding: 10px 30px;
-            transition: background-color 0.3s, color 0.3s;
-            font-weight: 300;
-            line-height: 1.25;
-            letter-spacing: 2px;
-            text-transform: none;
-            font-size: 16px;
-            border-width:1px;
-        
-            
-
-        }
-
-        .navbar .appointment:hover {
-            background-color: #c19957;
-            color: black;
-            border: none;
-        }
-
-        .navbar .menu-icon {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        .navbar .links {
-            display: flex;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                padding: 20px;
-            }
-
-            .navbar .links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .navbar .links a {
-                margin: 10px 0;
-                text-align: center;
-            }
-
-            .navbar .menu-icon {
-                display: block;
-            }
-        }
-
-        /* .card {
-            position: relative;
-            overflow: hidden;
-        }
-        .card .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            transition: opacity 0.3s;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .card:hover .overlay {
-            opacity: 1;
-        }
-        .card .overlay p,
-        .card .overlay a {
-            display: none;
-        }
-        .card:hover .overlay p,
-        .card:hover .overlay a {
-            display: block;
-        }
-        .card .overlay a {
-            border: 1px solid #ffffff;
-            padding: 10px 20px;
-            transition: background-color 0.3s, color 0.3s;
-            margin-top: 10px;
-        }
-        .card .overlay a:hover {
-            background-color: #c19957;
-            color: black;
-            border: none;
-        } */
-
         .hover-overlay {
             transition: transform 0.6s ease-in-out, opacity 0.6s ease-out;
             transform: translateY(100%);
@@ -156,7 +34,7 @@
             justify-items: center;
             align-items: center;
             gap: 5%;
-            padding-top: 30%;
+            padding-top: 20%;
 
             a {
                 margin-top: 10%;
@@ -210,7 +88,11 @@
             font-style: normal;
             color:#dbdbdb;
         }
+        .ctaimage{
+            background-image: (linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url('Assets/CTA-Image.jpeg'));
+        }
       
+        
     </style>
     <script>
         function toggleMenu() {
@@ -269,11 +151,12 @@
         </div>
     </div>
 
-    <div class="container mx-auto py-36 px-36">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="container mx-auto py-36 px-10 md:px-36 md:py-42">
+        <div class="grid grid-cols-1 md:grid-cols-3 md:gap-5 gap-8">
+                      
 
             <!-- Card Template -->
-            <div class="relative group card overflow-hidden rounded-lg shadow-lg h-80">
+            <div class="relative group card overflow-hidden rounded-lg shadow-lg h-80 ">
                 
                 <img alt="Service Image" class="w-full h-full object-cover"
                     src="Assets/Service1.jpeg">
@@ -441,22 +324,41 @@
 
         </div>
     </div>
-    <footer class="bg-black text-white font-sans max-h-xl">
+
+    <div class=" relative banner h-3/6 w-full ctaimage border-white" >
+        <img src="Assets/CTA-Image.jpeg" alt="" class="absolute h-full w-full object-cover opacity-30 grayscale">
+        <div class="wrapper font-light p-8 md:p-12 w-full h-full absolute flex flex-col space-y-4 md:space-y-8 z-100 text-white gap-2 ">
+            <div class="heading text-[32px] md:text-5xl w-full lg:w-2/5 xl:w-2/6">
+                Transform your trading
+            </div>
+            <div class="text-xl md:text-[22px]">
+                Unlock your Potential with Automation
+            </div>
+            
+                <a href="Homepage.html#about" class="border border-white  px-4 py-2  w-3/6 text-center md:w-1/6  text-center text-white  font-light tracking-wider transition-colors duration-300 hover:bg-[#c19957] hover:text-black hover:border-transparent z-1000"> Get in Touch </a>
+
+        </div>
+    </div>
+
+    <footer class="bg-black text-white max-h-xl h-2/4 p-5 grid grid-cols-1 items-center justify-center">
         <div class="flex flex-col items-center justify-center">
-            <div class="flex flex-col md:flex-row justify-between w-full max-w-4xl px-4 py-8">
-                <div class="text-center md:text-left mb-8 md:mb-0">
-                    <h1 class="text-lg">SifaFx</h1>
+            <div class="flex flex-col md:flex-row md:justify-around md:items-center w-full max-w-4xl px-4 py-8 
+            lg:justify-between">
+                <div class="text-center md:text-center mb-8 md:mb-0">
+                    <h1 class="text-start text-lg tracking-widest ">Sifafx</h1>
                 </div>
-                <div class="text-center mb-8 md:mb-0">
-                    <h1 class="text-lg">Location</h1>
-                    <p>Nairobi KE</p>
+                <div class="text-start mb-8 md:mb-0">
+                    <h1 class="text-xl mb-1">Location</h1>
+                    <a href="https://maps.app.goo.gl/PZDb1RLe51Rx76e7A" class="underline underline-offset-4">Nairobi
+                        KE</a>
                 </div>
-                <div class="text-center md:text-right">
-                    <h1 class="text-lg">Reach out</h1>
-                    <p><a href="mailto:admin@sifax.com" class="underline">admin@sifafx.com</a></p>
-                    <p><a href="tel:+254717820960" class="underline">+254717829969</a></p>
+                <div class="text-start md:text-right">
+                    <h1 class="text-xl font-light tracking-wider mb-1">Reach out</h1>
+                    <p><a href="mailto:admin@sifax.com" class="underline underline-offset-4">admin@sifafx.com</a></p>
+                    <p><a href="tel:+254717820960" class="underline underline-offset-4">+254717829969</a></p>
                 </div>
             </div>
+
         </div>
     </footer>
 </body>
