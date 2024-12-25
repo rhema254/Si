@@ -1,0 +1,448 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body class="bg-black flex items-center justify-center min-h-screen">
+    <div class="bg-black-800 text-white rounded-lg p-4 w-4/5">
+        <h1 class="text-4xl text-yellow-500 mb-2">Meeting request form</h1>
+        <p class="text-lg mb-6">We look forward to meeting with you</p>
+        <form action="">
+        <div id="currentDate" class="border-x border-t border-white w-full p-4 bg-[#dcc6a2] mb-3"></div>
+        <div class="flex items-center justify-between mb-4 ">
+            <div class="sliders-btn flex items-center justify-between gap-2">
+
+                <button id="prev-month" class="fas fa-chevron-left text-l text-center"></button>
+                <span class="text-xl">|</span>
+                <button id="next-month" class="fas fa-chevron-right text-l  text-center"></button>
+
+                <span id="current-month" class="text-xl"></span>
+            </div>
+        </div>
+        <div id="day-elements" class="grid grid-cols-9 gap-2 text-center text-gray-400 mb-2">
+            <div class="flex flex-col items-center">
+                <span class="text-transparent"> ui </span>
+                <div id="previous-week"
+                    class="flex items-center justify-center w-10 h-10 border border-gray-400 rounded-full"><i
+                        class="fas fa-chevron-left"></i></div>
+            </div>
+            <div class="flex flex-col items-center">
+                <span>Mon</span>
+                <div id="day1"
+                    class="day flex items-center justify-center w-10 h-10 border border-gray-400 rounded-full"></div>
+            </div>
+            <div class="flex flex-col items-center">
+                <span>Tue</span>
+                <div id="day2"
+                    class="day flex items-center justify-center w-10 h-10 border border-gray-400 rounded-full"></div>
+            </div>
+            <div class="flex flex-col items-center">
+                <span>Wed</span>
+                <div id="day3"
+                    class="day flex items-center justify-center w-10 h-10 border border-gray-400 rounded-full"></div>
+            </div>
+            <div class="flex flex-col items-center">
+                <span>Thu</span>
+                <div id="day4"
+                    class="day flex items-center justify-center w-10 h-10 border border-gray-400 rounded-full"></div>
+            </div>
+            <div class="flex flex-col items-center">
+                <span>Fri</span>
+                <div id="day5"
+                    class="day flex items-center justify-center w-10 h-10 border border-gray-400 rounded-full"></div>
+            </div>
+            <div class="flex flex-col items-center">
+                <span>Sat</span>
+                <div id="day6"
+                    class="day flex items-center justify-center w-10 h-10 border border-gray-400 rounded-full"></div>
+            </div>
+            <div class="flex flex-col items-center">
+                <span>Sun</span>
+                <div id="day7"
+                    class="day flex items-center justify-center w-10 h-10 border border-gray-400 rounded-full"></div>
+
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-transparent"> ui</span>
+                <div id="next-week"
+                    class="flex items-center justify-center w-10 h-10 border border-gray-400 rounded-full"><i
+                        class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <label class="block text-sm font-medium mb-2">Name <span class="text-red-500">*</span></label>
+            <input type="text" class="w-full bg-black border-b border-gray-600 p-2" value="Jane Smith" required>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium mb-2">Email address <span class="text-red-500">*</span></label>
+            <input type="email" class="w-full bg-black border-b border-gray-600 p-2" value="email@website.com"
+                required>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium mb-2">Phone number <span class="text-red-500">*</span></label>
+            <input type="tel" class="w-full bg-black border-b border-gray-600 p-2" value="555-555-5555" required>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium mb-2">Which service or services are you interested in?</label>
+            <div class="flex flex-col space-y-2">
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox text-yellow-500">
+                    <span class="ml-2">Strategy Automation</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox text-yellow-500">
+                    <span class="ml-2">Market Data Analysis Tools</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox text-yellow-500">
+                    <span class="ml-2">Testing & Optimization</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox text-yellow-500">
+                    <span class="ml-2">Risk Management Integration</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox text-yellow-500">
+                    <span class="ml-2">Multi-Platform Development</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox text-yellow-500">
+                    <span class="ml-2">Machine Learning and AI Intergration</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox text-yellow-500">
+                    <span class="ml-2">API Integration Services</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" class="form-checkbox text-yellow-500">
+                    <span class="ml-2">Other Service</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium mb-2">Message</label>
+            <textarea class="w-full bg-black border-b border-gray-600 p-2 h-24"></textarea>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="bg-yellow-500 text-black py-2 px-4 rounded">Submit</button>
+        </div>
+        </form>
+    </div>
+
+    <script>
+
+
+        const currentDateElement = document.getElementById('currentDate');
+        const currentMonthElement = document.getElementById('current-month');
+        const prevMonthElement = document.getElementById('prev-month');
+        const nextMonthElement = document.getElementById('next-month');
+        const prevWeekElement = document.getElementById('previous-week');
+        const nextWeekElement = document.getElementById('next-week');
+
+        const daysElements = [
+            document.getElementById('day1'),
+            document.getElementById('day2'),
+            document.getElementById('day3'),
+            document.getElementById('day4'),
+            document.getElementById('day5'),
+            document.getElementById('day6'),
+            document.getElementById('day7')
+        ];
+
+        let currentDate = new Date(); // Using let to allow updating the date
+
+        function updateCurrentMonth() {
+            const currentMonth = currentDate.toLocaleDateString('en-us', { month: 'long', year: 'numeric' });
+            currentMonthElement.textContent = currentMonth;
+        }
+
+        function getStartOfWeek(date) {
+            const startOfWeek = new Date(date);
+            const day = startOfWeek.getDay();
+            const diff = day === 0 ? -6 : 1 - day; // Adjust for Sunday as start of week
+            startOfWeek.setDate(startOfWeek.getDate() + diff);
+            return startOfWeek;
+        }
+
+        function updateWeekDays() {
+            const startOfWeek = getStartOfWeek(currentDate);
+
+            daysElements.forEach((dayElement, index) => {
+                const dayDate = new Date(startOfWeek);
+                dayDate.setDate(startOfWeek.getDate() + index);
+                dayElement.textContent = dayDate.getDate();
+                dayElement.classList.remove('selected');
+
+                if (dayDate.toDateString() === new Date().toDateString()) {
+                    dayElement.classList.add('selected');
+                }
+
+                dayElement.onclick = () => {
+                    currentDateElement.textContent = dayDate.toLocaleDateString("en-us", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                    daysElements.forEach((el) => el.classList.remove('bg-white', 'text-black'));
+                    dayElement.classList.add('bg-white', 'text-black');
+                };
+            });
+        }
+
+        function updateWeek(action) {
+            const startOfWeek = getStartOfWeek(currentDate);
+
+            if (action === 'previous-week') {
+                currentDate.setDate(startOfWeek.getDate() - 7);
+            } else if (action === 'next-week') {
+                currentDate.setDate(startOfWeek.getDate() + 7);
+            }
+
+            // Adjust month if week navigation goes out of bounds
+            const newMonth = currentDate.getMonth();
+            const currentMonth = new Date().getMonth();
+
+            if (newMonth !== currentMonth) {
+                updateCurrentMonth();
+            }
+
+            updateWeekDays();
+        }
+
+        function updateDate(action) {
+            if (action === 'prev') {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                currentDate.setDate(1); // Reset to the first of the new month
+            } else if (action === 'next') {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                currentDate.setDate(1); // Reset to the first of the new month
+            }
+            updateCurrentMonth();
+            updateWeekDays();
+        }
+
+        // Initialize the UI
+        const defaultDate = currentDate.toLocaleDateString("en-us", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        currentDateElement.textContent = defaultDate;
+
+        updateCurrentMonth();
+        updateWeekDays();
+
+        // Add event listeners for prev and next month buttons
+        prevMonthElement.onclick = () => {
+            resetButtonStyles();
+            prevMonthElement.classList.add('border-2', 'border-yellow-500', 'rounded-full', 'w-6', 'h-6')
+            updateDate('prev');
+        }
+
+        nextMonthElement.onclick = () => {
+            resetButtonStyles();
+            nextMonthElement.classList.add('border-2', 'border-yellow-500', 'rounded-full', 'w-6', 'h-6',)
+            updateDate('next');
+        }
+
+        prevWeekElement.onclick = () => {
+            resetButtonStyles();
+            prevWeekElement.classList.add('border-2', 'border-bg-white');
+            prevWeekElement.classList.remove('border-gray-400')
+            updateWeek('previous-week');
+        }
+
+        nextWeekElement.onclick = () => {
+            resetButtonStyles();
+            nextWeekElement.classList.add('border-2', 'border-bg-white');
+            updateWeek('next-week');
+        }
+
+        const resetButtonStyles = () => {
+            prevMonthElement.classList.remove('border-yellow-500', 'rounded-full', 'border-2');
+            nextMonthElement.classList.remove('border-yellow-500', 'rounded-full', 'border-2');
+            prevWeekElement.classList.remove('border-2', 'border-bg-white');
+            nextWeekElement.classList.remove('border-2', 'border-bg-white');
+        };
+
+        // Remove highlights when clicking anywhere else
+        document.addEventListener('click', (event) => {
+            // Check if the clicked target is not the prev or next button
+            if (
+                event.target !== prevMonthElement &&
+                event.target !== nextMonthElement &&
+                event.target !== prevWeekElement &&
+                event.target !== nextWeekElement
+            ) {
+                resetButtonStyles();
+            }
+        });
+
+        // Dynamically populate time slots
+        const timeSlotsDiv = document.getElementById("timeSlots");
+        const headings = ["Morning", "Afternoon", "Evening"]
+        const morningTitle = headings[0]
+        const afternoonTitle = headings[1]
+        const eveningTitle = headings[2]
+        const morningSlots = [
+            "4:00–4:30 am",
+            "4:30–5:00 am",
+            "5:00–5:30 am",
+            "5:30–6:00 am",
+            "6:00–6:30 am",
+            "6:30–7:00 am",
+            "7:00–7:30 am",
+            "7:30–8:00 am",
+            "8:00–8:30 am",
+            "8:30–9:00 am",
+            "9:00–9:30 am",
+            "9:30–10:00 am",
+            "10:00–10:30 am",
+            "10:30–11:00 am",
+            "11:00–11:30 am",
+            "11:30–12:00 pm"
+        ];
+
+        const afternoonSlots = [
+            "12:00–12:30 pm",
+            "12:30–1:00 pm",
+            "1:00–1:30 pm",
+            "1:30–2:00 pm",
+            "2:00–2:30 pm",
+            "2:30–3:00 pm",
+            "3:00–3:30 pm",
+            "3:30–4:00 pm",
+            "4:00–4:30 pm",
+            "4:30–5:00 pm",
+            "5:00–5:30 pm",
+            "5:30–6:00 pm"
+        ];
+
+        const eveningSlots = [
+            "6:00–6:30 pm",
+            "6:30–7:00 pm",
+            "7:00–7:30 pm",
+            "7:30–8:00 pm",
+            "8:00–8:30 pm",
+            "8:30–9:00 pm",
+            "9:00–9:30 pm",
+            "9:30–10:00 pm",
+            "10:00–10:30 pm",
+            "10:30–11:00 pm",
+            "11:00–11:30 pm",
+            "11:30–12:00 am"
+        ];
+
+
+       
+        let dayOfWeek = currentDate.getDay()
+        console.log(dayOfWeek)
+
+
+        if (dayOfWeek === 0) { // Sunday
+            // Clear previous time slots
+            timeSlotsDiv.innerHTML = "";
+
+            // Create no-availability container
+            const noAvailabilityDiv = document.createElement("div");
+            noAvailabilityDiv.classList.add("no-availability");
+
+            // Add calendar image
+            const calendarImage = document.createElement("img");
+            calendarImage.src = "path/to/calendar-image.jpg";
+            calendarImage.alt = "Calendar";
+            calendarImage.classList.add("calendar-image");
+            noAvailabilityDiv.appendChild(calendarImage);
+
+            // Add message
+            const message = document.createElement("p");
+            message.textContent = "No availability. Try another day.";
+            noAvailabilityDiv.appendChild(message);
+
+            // Append to the time slots container
+            timeSlotsDiv.appendChild(noAvailabilityDiv);
+        } else if (dayOfWeek === 6) { // Saturday
+            // Clear previous time slots
+            timeSlotsDiv.innerHTML = "";
+
+            // Create no-availability container
+            const noAvailabilityDiv = document.createElement("div");
+            noAvailabilityDiv.classList.add("no-availability");
+
+            // Add message
+            const message = document.createElement("p");
+            message.textContent = "No availability. Try another day.";
+            noAvailabilityDiv.appendChild(message);
+
+            // Append to the time slots container
+            timeSlotsDiv.appendChild(noAvailabilityDiv);
+        }
+
+
+        // Populate time slots
+        function populateAvailableSlots(selectedDate) {
+            const currentTime = new Date();
+            const oneHourFromNow = new Date(currentTime.getTime() + 60 * 60 * 1000); // One hour from now
+
+            const filterTimeSlots = (slots) => {
+                return slots.filter(slot => {
+                    const [startHour, startMinute, period] = slot.match(/(\d+):(\d+)\s?(am|pm)/i).slice(1);
+                    let slotDate = new Date(selectedDate);
+                    slotDate.setHours(period.toLowerCase() === "pm" && parseInt(startHour) !== 12 ? parseInt(startHour) + 12 : parseInt(startHour));
+                    slotDate.setMinutes(parseInt(startMinute));
+                    return slotDate > oneHourFromNow;
+                });
+            };
+
+            const filteredMorningSlots = filterTimeSlots(morningSlots);
+            const filteredAfternoonSlots = filterTimeSlots(afternoonSlots);
+            const filteredEveningSlots = filterTimeSlots(eveningSlots);
+
+            populateTimeSlots("Morning", filteredMorningSlots, "morning");
+            populateTimeSlots("Afternoon", filteredAfternoonSlots, "afternoon");
+            populateTimeSlots("Evening", filteredEveningSlots, "evening");
+        }
+
+        // Dynamically populate time slots
+        function populateTimeSlots(heading, slots, divName) {
+            if (slots.length === 0) return;
+
+            const div = document.createElement("div");
+            div.classList.add(divName);
+            const headingElement = document.createElement("p");
+            headingElement.textContent = heading;
+            div.appendChild(headingElement);
+
+            slots.forEach(slot => {
+                const button = document.createElement("button");
+                button.textContent = slot;
+                button.classList.add("slot-button");
+
+                button.addEventListener("click", () => {
+                    disableOtherButtons(button);
+                });
+                div.appendChild(button);
+            });
+
+            timeSlotsDiv.appendChild(div);
+        }
+
+        // Disable other buttons
+        function disableOtherButtons(selectedButton) {
+            const allButtons = document.querySelectorAll("#timeSlots button");
+            allButtons.forEach(button => {
+                if (button !== selectedButton) {
+                    button.disabled = true;
+                }
+            });
+        }
+
+        // Initialize time slots for today
+        handleDateSelection(currentDate);
+    </script>
+    </body>
+
+</html>

@@ -1,4 +1,89 @@
+<head>
+    <title>SifaFx</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Styles -->
+    <link href="styles.css" rel="stylesheet" />
 
+    <style>
+        /* Additional styles for features not yet supported by Tailwind */
+        .font-raleway-hero {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .links a::after {
+            content: '';
+            background-color: #fff;
+            width: 100%;
+            height: 2px;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            display: none;
+        }
+
+        .links a:hover::after {
+            display: block;
+        }
+
+        @media (min-width: 1033px) {
+            .menu-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+   <!-- Navbar -->
+   <nav class="fixed top-0 left-0 w-full bg-black py-7 px-4 md:px-56 z-50">
+    <div class="flex justify-between items-center">
+        <!-- Logo -->
+        <div ><a href="Homepage.html" class="text-white text-lg font-light">SifaFx</a></div>
+
+        <!-- Desktop Menu - Hidden on medium and small screens -->
+        <div class="hidden lg:flex space-x-4">
+            <a href="#home" class="text-white text-sm font-light hover:border-white hover:border-b-2">Home</a>
+
+            <a href="#about" class="text-white text-sm font-light hover:border-white hover:border-b-2">About</a>
+            <a href="services.html" class="text-white text-sm font-light hover:border-white hover:border-b-2">Services</a>
+            <a href="#" class="text-white text-sm font-light hover:border-white hover:border-b-2">How We Work</a>
+        </div>
+
+        <!-- Desktop Appointment Button - Hidden on medium and small screens -->
+        <a href="#about" class="hidden lg:block border border-white py-2 px-8 text-white text-sm font-light tracking-wider transition-colors duration-300 hover:bg-[#c19957] hover:text-black hover:border-transparent">
+            Book Appointment
+        </a>
+
+        <!-- Hamburger Menu - Visible only on medium and small screens -->
+        <button class="lg:hidden text-white text-2xl" onclick="toggleMenu()">
+            <i class="fas fa-bars" id="menuIcon"></i>
+        </button>
+    </div>
+</nav>
+
+<!-- Full-screen Mobile Menu -->
+<div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-95 z-40 hidden">
+    <div class="flex flex-col relative items-start justify-start no-scroll h-full space-y-4 px-10 mt-20">
+        <a href="Homepage.html" class="text-white text-md font-light  border-b w-full pb-2">Home</a>
+        <a href="#about" class="text-white text-md font-light border-b w-full pb-2">About</a>
+        <a href="services.html" class="text-white text-md font border-b w-full pb-2">Services</a>
+        <a href="#" class="text-white text-md font-light">How We Work</a>
+        <a href="#about" class=" w-full border border-white py-2 px-8 text-center text-white text-md font-light tracking-wider transition-colors duration-300 hover:bg-[#c19957] hover:text-black hover:border-transparent">
+            Book Appointment
+        </a>
+        
+    </div>
+</div>
 
 
 <div class="container2">
@@ -38,3 +123,60 @@
         </div>
     </div>
 </div>
+
+</body>
+<script>
+    
+    const currentDateElement = document.getElementById('current-date');
+    const daysElements = [
+        document.getElementById('day-1'),
+        document.getElementById('day-2'),
+        document.getElementById('day-3'),
+        document.getElementById('day-4'),
+        document.getElementById('day-5'),
+        document.getElementById('day-6'),
+        document.getElementById('day-7')
+    ];
+    const prevWeekElement = document.getElementById('prev-week');
+    const nextWeekElement = document.getElementById('next-week');
+
+    let currentDate = new Date();
+    
+    console.log()
+    
+    
+    
+    function updateCalendar() {
+        const startOfWeek = new Date(currentDate);
+        startOfWeek.setDate(currentDate.getDate() - currentDate.getDay() + 1);
+        
+
+        currentDateElement.textContent = startOfWeek.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+        daysElements.forEach((dayElement, index) => {
+            const dayDate = new Date(startOfWeek);
+            dayDate.setDate(startOfWeek.getDate() + index);
+            dayElement.textContent = dayDate.getDate();
+            dayElement.classList.remove('selected');
+            if (dayDate.toDateString() === currentDate.toDateString()) {
+                dayElement.classList.add('selected');
+            }
+            dayElement.onclick = () => {
+                currentDate = dayDate;
+                updateCalendar();
+            };
+        });
+    }
+
+    prevWeekElement.onclick = () => {
+        currentDate.setDate(currentDate.getDate() - 7);
+        updateCalendar();
+    };
+
+    nextWeekElement.onclick = () => {
+        currentDate.setDate(currentDate.getDate() + 7);
+        updateCalendar();
+    };
+
+    updateCalendar();
+</script>

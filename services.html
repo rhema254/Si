@@ -160,7 +160,7 @@
 
             a {
                 margin-top: 10%;
-                border: 1px solid #ffffff;
+                border: 1px solid #c19957;;
                 padding: 10px 20px;
                 transition: background-color 0.3s, color 0.3s;
                 text-decoration: none;
@@ -221,19 +221,54 @@
 </head>
 
 <body class="services-container">
-    <div class="navbar">
-        <div class="brand">SifaFx</div>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full bg-black py-7 px-4 z-50 lg:px-10">
+        <div class="flex justify-between items-center  space-x-7  ">
+            <!-- Logo -->
+            <div><a href="Homepage.html" class="text-white text-lg font-light">SifaFx</a></div>
+
+            <!-- Desktop Menu - Hidden on medium and small screens -->
+            <div class="hidden lg:flex space-x-6">
+                <a href="Homepage.html"
+                    class="text-white text-sm lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">Home</a>
+
+                <a href="Homepage.html#about"
+                    class="text-white text-sm font-light lg:tracking-widest  font-light hover:underline underline-offset-8 decoration-2">About</a>
+                <a href="services.html"
+                    class="text-white text-sm font-light lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">Services</a>
+                <a href="HowWeWork.html"
+                    class="text-white text-sm font-light lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">How
+                    We Work</a>
+            </div>
+
+            <!-- Desktop Appointment Button - Hidden on medium and small screens -->
+            <a href="Homepage.html#about"
+                class="hidden lg:flex border border-white py-2 px-2 text-white text-md font-light tracking-widest transition-colors duration-300 hover:bg-[#c19957] hover:text-black hover:border-transparent">
+                Book Appointment
+            </a>
+
+            <!-- Hamburger Menu - Visible only on medium and small screens -->
+            <button class="lg:hidden text-white text-2xl" onclick="toggleMenu()">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
         </div>
-        <div class="links">
-            <a href="Homepage.html">Home</a>
-            <a href="#">About</a>
-            <a href="services.html">Services</a>
-            <a href="#">How We Work</a>
+    </nav>
+
+    <!-- Full-screen Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-95 z-40 hidden">
+        <div class="flex flex-col relative items-start justify-start no-scroll h-full space-y-4 px-10 mt-20">
+            <a href="Homepage.html" class="text-white text-md font-light  border-b w-full pb-2">Home</a>
+            <a href="Homepage.html#about" class="text-white text-md font-light border-b w-full pb-2">About</a>
+            <a href="services.html" class="text-white text-md font border-b w-full pb-2">Services</a>
+            <a href="HowWeWork.html" class="text-white text-md font-light">How We Work</a>
+            <a href="Homepage.html#about"
+                class=" w-full border border-white py-2 px-8 text-center text-white text-md font-light tracking-wider transition-colors duration-300 hover:bg-[#c19957] hover:text-black hover:border-transparent">
+                Book Appointment
+            </a>
+
         </div>
-        <a class="appointment" href="#">Book Appointment</a>
     </div>
+
     <div class="container mx-auto py-36 px-36">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
@@ -254,7 +289,7 @@
                     <p class="text-2xl font-raleway "> Strategy Automation</p>
 
                     <p class="font-raleway-small">From $200</p>
-                    <a href="#" class="text-blue-400 underline">Read More</a>
+                    <a href="StrategyAutomation.html" class="text-blue-400 underline ">Read More</a>
                 </div>
             </div>
 
@@ -275,7 +310,7 @@
                     <p class="text-2xl font-raleway "> Multi-Platform Development</p>
 
                     <p class="font-raleway-small">From $200</p>
-                    <a href="#" class="text-blue-400 underline">Read More</a>
+                    <a href="Multiplatform-Development.html" class="text-blue-400 underline">Read More</a>
                 </div>
             </div>
 
@@ -296,7 +331,7 @@
                     <p class="text-2xl font-raleway "> Testing & Optimization </p>
 
                     <p class="font-raleway-small">From $300 per year</p>
-                    <a href="#" class="text-blue-400 underline">Read More</a>
+                    <a href="Testing&Optimization.html" class="text-blue-400 underline">Read More</a>
                 </div>
             </div>
 
@@ -317,7 +352,7 @@
                     <p class="text-2xl font-raleway "> Risk Management</p>
 
                     <p class="font-raleway-small">From $200</p>
-                    <a href="#" class="text-blue-400 underline">Read More</a>
+                    <a href="RiskManagement.html" class="text-blue-400 underline">Read More</a>
                 </div>
             </div>
 
@@ -337,7 +372,7 @@
                     <p class="text-2xl font-raleway ">Technical Support</p>
 
                     <p class="font-raleway-small">From $100</p>
-                    <a href="#" class="text-blue-400 underline">Read More</a>
+                    <a href="TechnicalSupport.html" class="text-blue-400 underline">Read More</a>
                 </div>
             </div>
 
@@ -358,7 +393,7 @@
                     <p class="text-2xl font-raleway "> API Integration Services</p>
 
                     <p class="font-raleway-small">From $800</p>
-                    <a href="#" class="text-blue-400 underline">Read More</a>
+                    <a href="API-Integration.html" class="text-blue-400 underline">Read More</a>
                 </div>
             </div>
 
@@ -379,7 +414,7 @@
                     <p class="text-2xl font-raleway "> Machine Learnig Enhancement</p>
 
                     <p class="font-raleway-small">From $7,500</p>
-                    <a href="#" class="text-blue-400 underline">Read More</a>
+                    <a href="Service7.html" class="text-blue-400 underline">Read More</a>
                 </div>
             </div>
 
@@ -400,7 +435,7 @@
                     <p class="text-2xl font-raleway "> Market Data Analysis Tools</p>
 
                     <p class="font-raleway-small">From $200</p>
-                    <a href="#" class="text-blue-400 underline">Read More</a>
+                    <a href="Service8.html" class="text-blue-400 underline">Read More</a>
                 </div>
             </div>
 
@@ -418,8 +453,8 @@
                 </div>
                 <div class="text-center md:text-right">
                     <h1 class="text-lg">Reach out</h1>
-                    <p><a href="mailto:admin@sifax.com" class="underline">admin@sifax.com</a></p>
-                    <p><a href="tel:+254717820960" class="underline">+254717820960</a></p>
+                    <p><a href="mailto:admin@sifax.com" class="underline">admin@sifafx.com</a></p>
+                    <p><a href="tel:+254717820960" class="underline">+254717829969</a></p>
                 </div>
             </div>
         </div>

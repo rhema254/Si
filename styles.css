@@ -5,8 +5,11 @@ body{
     height: 100%;
     background-color: black;
     color: white;
+    /* overflow-y: scroll;
+    overflow-x: hidden; */
     }
 
+/* 
 .hero-section1 {
     background-color: #b38b4d;
     text-align: center;
@@ -35,8 +38,8 @@ body{
     font-size: 18px;
     display: inline-block;
     margin-top: 20px;
-}
-
+} */
+/* 
 @media (max-width: 768px) {
     .hero-section1 h1 {
         font-size: 48px;
@@ -47,7 +50,7 @@ body{
     .hero-section1 p {
         font-size: 16px;
     }
-}
+} */
 /* 
 .gallery {
     display: flex;
