@@ -4,10 +4,9 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>
-        API Integration Services
+        Technical Support
     </title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <link rel="stylesheet" href="output.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,8 +37,9 @@
     </style>
 </head>
 
-<body class="bg-black text-white bg-[#1c1f1f] flex-col">
+<body class=" text-white bg-[#1c1f1f] flex-col">
 
+    <!-- Navbar -->
     <nav class="fixed top-0 left-0 w-full bg-black py-7 px-4 z-50 lg:px-10">
         <div class="flex justify-between items-center  space-x-7  ">
             <!-- Logo -->
@@ -51,11 +51,11 @@
                     class="text-white text-sm lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">Home</a>
 
                 <a href="Homepage.html#about"
-                    class="text-white text-sm font-light lg:tracking-widest  font-light hover:underline underline-offset-8 decoration-2">About</a>
+                    class="text-white text-sm lg:tracking-widest  font-light hover:underline underline-offset-8 decoration-2">About</a>
                 <a href="services.html"
-                    class="text-white text-sm font-light lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">Services</a>
+                    class="text-white text-sm lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">Services</a>
                 <a href="HowWeWork.html"
-                    class="text-white text-sm font-light lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">How
+                    class="text-white text-sm lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">How
                     We Work</a>
             </div>
 
@@ -86,6 +86,7 @@
 
         </div>
     </div>
+
     <!-- Main Content -->
     <div class="bg-[#1c1f1f] text-[#dbdbdb] p-5 pt-24 md:flex md:flex-row md:justify-center md:align-center ">
         <div class="container  py-6 md:py-20 md:flex-initial">
@@ -95,17 +96,20 @@
                 <div class="w-full h-full order-1 mb-5 md:flex md:flex-row  md:justify-center md:align-center
                  ">
 
-                    <img alt="Close-up of a computer motherboard with various components" src="Assets/Service2.jpeg"
+                    <img alt="Close-up of a computer motherboard with various components" src="Assets/Service5.jpeg"
                         class="object-cover w-96 h-full mb-4 md:mb-0  aspect-[4/5] md:md:w-4/5 md:h-4/5 lg:w-[200px] lg:h-5/6  " />
 
                 </div>
                 <div class="col-span-2 gap-4 order-2 lg:w-5/6">
-                    <h1 class="text-5xl font-raleway text-[#C19957] mt-5 mb-2.5 lg:mt-0">API Integration Services</h1>
-                    <p class="text-xl text-white font-light mb-2 ">From $800</p>
+                    <h1 class="text-5xl font-raleway text-[#C19957] mt-5 mb-2.5 lg:mt-0">Technical Support</h1>
+                    <p class="text-xl text-white font-light mb-2 ">From $100</p>
                     <p class="text-[#dbdbdb]">
-                        We develop custom API solutions to connect your trading systems with various data sources,
-                        brokers, and third-party services. This includes real-time market data feeds, order execution
-                        APIs, and custom interfaces for proprietary trading platforms
+                        Our technical team provides comprehensive support for your automated strategy, including system
+                        monitoring, troubleshooting, and platform-specific assistance.<br><br>
+
+                        We ensure your strategy runs smoothly and handle any technical issues that arise during trading
+                        hours.
+
                     </p>
                 </div>
             </div>
@@ -150,22 +154,6 @@
 
         </div>
     </footer>
-    <script>
-          function toggleMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuIcon = document.getElementById('menuIcon');
-            
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-                menuIcon.classList.remove('fa-bars');
-                menuIcon.classList.add('fa-times');
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('fa-times');
-                menuIcon.classList.add('fa-bars');
-            }
-        }
-    </script>
 </body>
 
 </html>
