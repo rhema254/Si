@@ -257,34 +257,35 @@
                     <div class="timezone-select flex p-2 sm:w-3/6 md:w-4/6 lg:w-2/5   ">
 
                         <i class='bx bx-globe font-bold '></i><select name="timezone" id="timezone"
-                            class="bg-[#121414] text-sm w-4/5 justify-self-center" required>
+                            class="bg-[#121414] text-sm w-4/5 justify-self-center" >
 
                         </select><span class="text-red-500">*</span>
                         <input id="timezonefield" type="text" value="" hidden />
 
-                    </div>
+                    </div> 
                 </div>
-                <div class="mb-6 ">
+               <div class="mb-6 ">
                     <label class="block text-sm font-bold mb-2 ">Name <span class="text-red-500">*</span></label>
                     <input type="text" id="fullname" class="w-full bg-black border-b border-gray-600 p-2" value=""
-                        placeholder="John Smith" required>
+                        placeholder="John Smith" pattern="^[a-zA-Z ]+" maxlength="30" minlength="5"  title="Min:5 Max:30 alphabetic characters are allowed" required>
                 </div>
 
                 <div class="mb-6">
                     <label class="block text-sm font-medium mb-2">Email address <span
                             class="text-red-500">*</span></label>
                     <input type="email" class="w-full bg-black border-b border-gray-600 p-2"
-                        placeholder="email@website.com" value="" required>
+                        placeholder="email@website.com" value="" minlength="5" maxlength="80" required>
+
                 </div>
 
                 <div class="mb-6">
                     <label class="block text-sm font-medium mb-2">Phone number <span
                             class="text-red-500">*</span></label>
                     <input type="tel" id="phoneInput" class="w-full bg-black border-b border-gray-600 p-2"
-                        placeholder="555-555-5555" inputmode="numeric" pattern="[0-9]*" required
-                        onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                        placeholder="555-555-5555" inputmode="numeric" pattern="[0-9]*" minlength="10" maxlength="10" required
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57" title="Only 10 numeric characters are allowed "> 
 
-                </div>
+                </div> 
 
                 <div class="mb-6">
                     <label class="block text-sm font-medium mb-2">Which service or services are you interested
@@ -331,14 +332,14 @@
 
                         </label>
                     </div>
-                </div>
+                </div> 
 
                 <div class="mb-6 ">
                     <label class="block text-sm font-medium mb-2">Message</label>
-                    <textarea id="message" class="w-full bg-black border-b border-gray-600 p-2 h-24" required
+                    <textarea id="description" class="w-full bg-black border-b border-gray-600 p-2 h-24" required
                         autocorrect="on" spellcheck="true" maxlength="300" autocapitalize="sentences"
                         placeholder="A brief description of the service you're looking for. Maximum 300 characters"></textarea>
-                </div>
+                </div> 
 
                 <div class="text-center">
                     <button type="submit" class="bg-yellow-500 text-black py-2 px-4 rounded">Submit</button>
@@ -384,3 +385,6 @@
 </body>
 
 </html>
+
+
+

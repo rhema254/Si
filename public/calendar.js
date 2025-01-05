@@ -136,6 +136,8 @@ updateWeekDisplay();
 
 
 
+
+
 // -------------Timeslots-----------------
 
 // 2. Populating the Timeslots dynamically.
@@ -145,6 +147,7 @@ const headings = ["Morning", "Afternoon", "Evening"]
 const morningTitle = headings[0]
 const afternoonTitle = headings[1]
 const eveningTitle = headings[2]
+
 const morningSlots = [
     "4:00–4:30 am",
     "4:30–5:00 am",
@@ -162,6 +165,7 @@ const morningSlots = [
     "10:30–11:00 am",
     "11:00–11:30 am",
     "11:30–12:00 pm"
+
 ];
 
 const afternoonSlots = [
@@ -193,27 +197,42 @@ const eveningSlots = [
     "11:00–11:30 pm",
     "11:30–12:00 am"
 ];
+let selectedButton = null;
+let selectedTime = selectedButton; // Track the currently selected button
 
-let selectedTime = null
+
 
 function updateSelectedTime(time) {
     selectedTime = time;
-    return time;
+    console.log("Selected Time:", selectedTime); // Optional: Debugging
 }
 
 function populateTimeSlots(headings, slots, divName) {
     const div = document.createElement("div");
-    div.classList.add(divName);
-    const p = document.createElement("p")
-    div.appendChild(p)
+    div.classList.add(divName, 'cursor-pointer');
+    const p = document.createElement("p");
+    div.appendChild(p);
+
+    p.textContent = headings;
+
     slots.forEach(slot => {
-        p.textContent = headings
         const button = document.createElement("div");
 
-        const fulltime = slot;
-        const shortest = slot.split("–")[0];
-        const shorter = slot.split(" ")[1];
-        const shorttime = shortest + " " + shorter;
+
+        let fulltime = slot;
+        let shortest = slot.split("–")[0];
+        let shorter = slot.split(" ")[1];
+
+        let shorttime = null
+
+        if(fulltime === '11:30–12:00 pm'){
+            shorttime = '11:30 am';
+        }else if(fulltime === '11:30–12:00 am'){
+            shorttime = '11:30 pm'
+        }else{
+            shorttime = shortest + " " + shorter;
+        }
+
 
 
 
@@ -247,13 +266,19 @@ function populateTimeSlots(headings, slots, divName) {
 
 
         button.addEventListener("click", () => {
-            // Handle button click: disable other buttons and store selected time
-            disableOtherButtons(button);
-            button.setAttribute(('data-set-time'), button.textContent)
-            button.getAttribute('data-set-time');
-            const time = button.getAttribute('data-set-time');
-            updateSelectedTime(time);
+            // Reset styles for previously selected button
+            if (selectedButton) {
+                selectedButton.classList.remove('bg-white', 'text-black');
+            }
 
+            // Update the selected button
+            selectedButton = button;
+
+            // Apply styles to the new selection
+            button.classList.add('bg-white', 'text-black');
+
+            // Update the selected time
+            updateSelectedTime(button.textContent);
         });
         div.appendChild(button);
     });
@@ -270,7 +295,7 @@ function disableOtherButtons(selectedButton) {
     allButtons.forEach(button => {
         if (button !== selectedButton) {
             button.disabled = true;
-          
+
         }
     });
 }
