@@ -3,15 +3,32 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>
-        SifaFx
-    </title>
+   
+    <title>Revolutionize Your Trading with Sifafx</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="Assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="Assets/favicon_io/site.webmanifest">
+    <link rel="canonical" href="https://www.sifafx.com/">
+    <meta http-equiv="Content-Language" content="en">
+    <meta content="origin-when-cross-origin" name="referrer">
+    <meta name="title" content="Revolutionize Your Trading with Sifafx">
+    <meta name="description" content="Explore cutting-edge automated trading solutions tailored for your success.">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta property="og:title" content="Revolutionize Your Trading with Sifafx">
+    <meta property="og:description" content="Explore cutting-edge automated trading solutions tailored for your success.">
+    <meta property="og:image:secure_url" content="https://res.cloudinary.com/dwaet6cyt/image/upload/v1736273830/Sifafx_image_ug5oh1.png">
+    <meta property="og:image" content="https://res.cloudinary.com/dwaet6cyt/image/upload/v1736273655/logo_t3qzjl.png">
+
+
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="output.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
     <style>
         body,
@@ -44,8 +61,8 @@
                 transform: translateY(0);
             }
         }
-        
-    
+
+
 
         .animation1 {
             animation-name: comeUp;
@@ -169,10 +186,12 @@
     <div class="relative text-left text-white " id="home">
         <div class="relative">
 
-            <img src="Assets/hero_image.jpeg" alt="Office interior with a large table and chairs, and a sofa in the background"
+            <img src="Assets/hero_image.jpeg"
+                alt="Office interior with a large table and chairs, and a sofa in the background"
                 class="grayscale w-full h-full object-cover brightness-[65%]" />
             <div class="content p-6 absolute top-1/3 lg:top-75 lg:left-44">
-                <h1 class="text-[40px] font-light md:text-[56px] lg:text-7xl mb-2.5 animation1 delay11 w-full lg:w-2/3 ">
+                <h1
+                    class="text-[40px] font-light md:text-[56px] lg:text-7xl mb-2.5 animation1 delay11 w-full lg:w-2/3 ">
                     Automate your trading
                 </h1>
                 <p class="text-[20px] mb-2.5 animation2 delay10">
@@ -180,6 +199,10 @@
                 </p>
             </div>
         </div>
+    </div>
+
+    <div class=" absolute bottom-2 success-message w-full bg-black " id="success-message">
+        <box-icon class='bx bxs-check-circle text-[#247da0] '>check-circle</box-icon>
     </div>
 
 
@@ -192,8 +215,7 @@
             <h2 class="md:text-[22px] font-light lg:text-[28px] mb-5 animation2 delay0">
                 Your partner in automated trading
             </h2>
-            <p
-                class="text-m mb-5 w-full md:w-4/5 lg:w-3/5 text-center mx-auto  font-light animation2 delay1">
+            <p class="text-m mb-5 w-full md:w-4/5 lg:w-3/5 text-center mx-auto  font-light animation2 delay1">
                 At Sifafx, we empower traders to navigate the financial markets with confidence and precision. We
                 combine financial expertise with cutting-edge technology to create automated trading strategies that are
                 accessible
@@ -230,14 +252,15 @@
     </div>
 
     <div id="myModal" class="hidden modal bg-black  fixed inset-0 z-50   w-full h-full flex-col ">
-       
-        <div id="progress" class=" hidden relative w-full" >
+
+        <div id="progress" class=" hidden relative w-full">
             <div id="progressBar" class="absolute top-0 left-0 h-[2px] bg-red-500 w-0"></div>
         </div>
-        
-        <div class="control-bar grid grid-cols-1  text-white w-full justify-items-center lg:grid-cols-3 lg:justify-items-center">
+
+        <div
+            class="control-bar grid grid-cols-1  text-white w-full justify-items-center lg:grid-cols-3 lg:justify-items-center">
             <div id="imageCounter" class="hidden lg:block image-counter lg:justify-self-start ">1 / 3</div>
-           
+
             <div
                 class="bar grid grid-cols-4 w-2/5 justify-items-center gap-2 bg-gray-900/20 rounded font-light lg:grid-cols-3">
 
@@ -262,13 +285,13 @@
 
                     <div id="lbutton"
                         class=" absolute flex items-center justify-center z-50 left-3 bg-black/50 rounded-full w-[40px] h-[40px] md:left-[4.5rem] lg:left-36 ">
-                        <i class="fas fa-chevron-left  z-50  "  onclick="changeSlide(-1)"></i>
+                        <i class="fas fa-chevron-left  z-50  " onclick="changeSlide(-1)"></i>
                     </div>
                     <img id="modalImage" class="w-full h-full object-contain" src="Assets/image1.jpg"
                         alt="Image not found" />
                     <div id="rbutton"
                         class=" absolute flex items-center justify-center z-50 right-4 bg-black/50 rounded-full w-[40px] h-[40px] md:right-[4.5rem] lg:right-36 ">
-                        <i class="fas fa-chevron-right z-50 "  onclick="changeSlide(1)"></i>
+                        <i class="fas fa-chevron-right z-50 " onclick="changeSlide(1)"></i>
                     </div>
 
                     <div id="imageCount"
@@ -281,7 +304,7 @@
             <div id="thumbnails-grid" class=" hidden thumbnail-container w-3/5 lg:w-2/5  justify-center ">
                 <div class="thumbnail-list grid grid-rows-3 gap-0 w-full justify-start content-start">
                     <!-- Thumbnails will be dynamically added here -->
-    
+
                 </div>
             </div>
         </div>
@@ -305,17 +328,21 @@
                     </div>
                     <div class="flex items-center justify-start ">
                         <i class="fas fa-envelope text-lg  mr-2"></i>
-                        <span class="text-lg font-light underline underline-offset-8 decoration-2">admin@sifax.com</span>
+                        <span
+                            class="text-lg font-light underline underline-offset-8 decoration-2">admin@sifax.com</span>
                     </div>
                 </div>
 
                 <!-- Location -->
                 <div class="mb-8 ">
                     <div class="grid items-center justify-start mb-2 lg:grid   ">
-                        
-                        <p class="text-lg font-bold">Location</p> 
+
+                        <p class="text-lg font-bold">Location</p>
                         <p class="text-lg mb-4"><i class="fas fa-map-marker-alt text-lg mr-2"></i>Nairobi, KE</p>
-                        <span class="hidden lg:block"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d215726.85918867835!2d36.84739685!3d-1.3032089500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi!5e1!3m2!1sen!2ske!4v1735271089886!5m2!1sen!2ske" width="200" height="100" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></span>
+                        <span class="hidden lg:block"><iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d215726.85918867835!2d36.84739685!3d-1.3032089500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi!5e1!3m2!1sen!2ske!4v1735271089886!5m2!1sen!2ske"
+                                width="200" height="100" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe></span>
                     </div>
                 </div>
 
@@ -334,7 +361,7 @@
         </div>
     </div>
 
- <footer class="bg-black text-white max-h-xl h-2/4 p-5 grid grid-cols-1 items-center justify-center">
+    <footer class="bg-black text-white max-h-xl h-2/4 p-5 grid grid-cols-1 items-center justify-center">
         <div class="flex flex-col items-center justify-center">
             <div class="flex flex-col md:flex-row md:justify-around md:items-center w-full max-w-4xl px-4 py-8 
             lg:justify-between">
@@ -383,6 +410,9 @@
                 menuIcon.classList.add('fa-bars');
             }
         }
+
+
+       
 
         let currentSlide = 0;
         const images = [
@@ -448,7 +478,7 @@
                 }
             });
         }
-        
+
         function openThumbnails() {
             const openthumbs = document.getElementById('thumbnails-grid');
             const rightbutton = document.getElementById('rbutton');
@@ -456,16 +486,16 @@
 
             if (openthumbs.classList.contains('hidden')) {
                 openthumbs.classList.remove('hidden');
-                rightbutton.classList.add('right-[4rem]','md:right-[8rem]','lg:right-[15rem]','xl:right-[20rem]');
-                rightbutton.classList.remove('right-4','lg:right-12');
+                rightbutton.classList.add('right-[4rem]', 'md:right-[8rem]', 'lg:right-[15rem]', 'xl:right-[20rem]');
+                rightbutton.classList.remove('right-4', 'lg:right-12');
                 leftbutton.classList.add('md:left-[1rem]')
             } else {
                 openthumbs.classList.add('hidden');
-                rightbutton.classList.add('right-4','lg:right-12');
-                rightbutton.classList.remove('right-[4rem]','md:right-[8rem]','lg:right-[15rem]');
+                rightbutton.classList.add('right-4', 'lg:right-12');
+                rightbutton.classList.remove('right-[4rem]', 'md:right-[8rem]', 'lg:right-[15rem]');
                 leftbutton.classList.remove('md:left-[1rem]');
 
-            }   
+            }
 
         }
         // Dynamically create thumbnails
@@ -474,13 +504,13 @@
             const thumbnail = document.createElement('div');
             thumbnail.classList.add('thumbnail', 'rounded-lg', 'h-[30%]');
             thumbnail.setAttribute('onclick', `openModal(${index})`);
-            
+
 
             const thumbnailImage = document.createElement('img');
             thumbnailImage.src = image;
             thumbnailImage.alt = `Thumbnail ${index + 1}`;
             thumbnailImage.classList.add('max-w-full', 'max-h-full', 'object-contain');
-           
+
 
             thumbnail.appendChild(thumbnailImage);
             thumbnailList.appendChild(thumbnail);
@@ -501,7 +531,7 @@
         function playSlide() {
 
             playInterval = setInterval(() => changeSlide(1), 2000);
-            
+
             pausebtn.classList.remove('hidden');
             playbtn.classList.add('hidden');
             progressdiv.classList.remove('hidden');
@@ -510,20 +540,20 @@
 
 
         }
-        
+
         function pauseSlide() {
-            
+
             clearInterval(playInterval);
-            
+
             playbtn.classList.remove('hidden');
             pausebtn.classList.add('hidden');
             progressdiv.classList.add('hidden');
 
-            
-            
-            
+
+
+
         }
-        
+
         function updateProgressBar() {
             let progressPercent = ((currentSlide + 1) / images.length) * 100;
             progressBar.style.width = `${progressPercent}%`;
@@ -532,7 +562,7 @@
 
         updateProgressBar();
 
-//----------- ---------- Incomplete
+        //----------- ---------- Incomplete
         function zoomIn(image) {
             if (image.style.transform === 'scale(1.5)') {
                 image.style.transform = 'scale(1)'; // Reset zoom
@@ -585,3 +615,20 @@
             observer.observe(element);
         });
     </script>
+
+     <script>
+
+        const successMessage = sessionStorage.getItem('formSuccessMessage');
+        const successmessageElement = document.getElementById('success-message')
+        if (successMessage) {
+            // Display the success message in a div or alert box
+            
+            successmessageElement.textContent = successMessage;
+            successmessageElement.classList.remove('hidden')
+            
+            // Clear the message from sessionStorage after displaying it
+            sessionStorage.removeItem('formSuccessMessage');
+        }else{
+            successmessageElement.classList.add('hidden')
+        }
+        </script>

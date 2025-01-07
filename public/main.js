@@ -1,3 +1,5 @@
+
+
 /* 
     Functions here:
     1. Populating the dropdown using list in timezone.js
@@ -7,8 +9,9 @@
 */
 
 
-
+const apiUrl = config.apiUrl;
 // Populate the dropdown
+
 const timezoneSelect = document.getElementById('timezone');
 
 timezones.forEach((timezone) => {
@@ -24,7 +27,7 @@ timezones.forEach((timezone) => {
 function getCurrentSelectedTimezone() {
     let timezonefield = document.getElementById('timezonefield');
     timezonefield = timezoneSelect.value;
-    console.log(timezonefield)
+
     return timezoneSelect.value;
 }
 
@@ -47,28 +50,36 @@ function convertTo24HourFormat(inputTime) {
     const timeHyphen = "–";
     let resultTime = null;
 
+    try {
+        if (inputTime.length >= 9) {
+            // Long time format (e.g., "10:00-11:30 am")
+            let startTime = inputTime.split("–")[0];
+            let ampm = inputTime.split(" ")[1];
 
-    if (inputTime.length >= 9) {
-        // Long time format (e.g., "10:00-11:30 am")
-        let startTime = inputTime.split("–")[0];
-        let ampm = inputTime.split(" ")[1];
-        
-        const start24 = convertSingleTime(startTime, ampm);        
-        resultTime = `${start24}`;
-    } else {
-        // Short time format (e.g., "10:00 am")
-        let startTime  = inputTime.split(" ")[0];
-        let ampm = inputTime.split(" ")[1];
-        resultTime = convertSingleTime(startTime, ampm);
+            const start24 = convertSingleTime(startTime, ampm);
+            resultTime = `${start24}`;
+        } else {
+            // Short time format (e.g., "10:00 am")
+            let startTime = inputTime.split(" ")[0];
+            let ampm = inputTime.split(" ")[1];
+            resultTime = convertSingleTime(startTime, ampm);
+        }
+
+        return resultTime;
+    } catch (error){
+        console.error("Error converting time to 24-hour format:", error);
+
+        // Display an alert to the user
+        alert("Please select a valid time.");
+
     }
 
-    return resultTime;
 }
 
 // Helper function to convert a single time (e.g., "10:00 am") into 24-hour format
 function convertSingleTime(startTime, ampm) {
     let [hours, minutes] = startTime.split(":").map(Number);
-    
+
 
     if (ampm.toLowerCase() === "pm" && hours !== 12) {
         hours += 12;
@@ -97,9 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault(); // Prevent the form from refreshing the page
 
 
+
+
+
         //1. Capture Form data.
         const fullname = document.getElementById('fullname')
-        const  name = fullname.value;
+        const name = fullname.value;
 
         const email = form.querySelector('input[type="email"]').value;
 
@@ -113,15 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
         //  [2] - year, [1] - day, [0] - month
         const date = date1.split("/", 3)[2] + "-" + date1.split('/', 3)[0] + "-" + date1.split("/", 3)[1]
 
-        console.log(date)
+
 
         let initialTime = selectedTime;
 
         const time = convertTo24HourFormat(initialTime);
-        console.log("Time inside function :" + time);
         
+
         const servicesArray = Array.from(form.querySelectorAll('input[type="checkbox"]:checked'))
             .map((checkbox) => checkbox.value);
+       
         const servicesObject = {
             services: servicesArray // Structure the services as an object
         };
@@ -133,18 +148,18 @@ document.addEventListener('DOMContentLoaded', () => {
             fullname: name,
             email: email,
             phone: phone,
-            timezone:timezone,
-            date :date,
+            timezone: timezone,
+            date: date,
             time: time,
-            services:servicesObject,
+            services: servicesObject,
             description: description,
         };
 
-        console.log('Form Data:', formData); // For debugging
+        // console.log('Form Data:', formData); // For debugging
 
         try {
             //3. Send data to the backend
-            const response = await fetch(`http://localhost:5000/submit`, { // Update '/submit-form' with your backend endpoint
+            const response = await fetch(`${apiUrl}/submit`, { // Update '/submit-form' with your backend endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -154,11 +169,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 sessionStorage.setItem('formSuccessMessage', 'Thank you for your information. We received your response and emailed you a copy');
-        
+
                 // Redirect to the homepage after a small delay (optional for smoother transition)
                 setTimeout(() => {
-                    window.location.href = 'Homepage.html'; // Update with your homepage URL
-                }, 2000); // Delay of 2 seconds before redirection            } else {
+                    window.location.href = 'Homepage.html';
+                }, 1500); //   
+            } else {
                 alert('Failed to submit the form. Please try again.');
             }
         } catch (error) {
@@ -167,4 +183,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
