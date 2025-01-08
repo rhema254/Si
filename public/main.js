@@ -1,4 +1,5 @@
 
+const apiUrl = config.apiUrl;
 
 /* 
     Functions here:
@@ -9,7 +10,6 @@
 */
 
 
-const apiUrl = config.apiUrl;
 // Populate the dropdown
 
 const timezoneSelect = document.getElementById('timezone');
