@@ -421,10 +421,9 @@
             "Assets/image3.jpg"
         ];
         imageNO = images.length
-        console.log(currentSlide)
+        
 
         function openModal(index) {
-            console.log("openModal called with index:", index);  // Debugging log
             currentSlide = index;
             document.getElementById('myModal').style.display = "block";
             document.body.classList.add("no-scroll");
@@ -446,14 +445,12 @@
                 currentSlide = images.length - 1;
             }
 
-            console.log(currentSlide)
             showSlide(currentSlide);
             changeThumbnail(currentSlide);
             updateProgressBar();
         }
 
         function showSlide(index) {
-            console.log("showSlide called with index:", index);  // Debugging log
             const modalImage = document.getElementById('modalImage');
             const imageCounter = document.getElementById('imageCounter');
             const imageCount = document.getElementById('imageCount')
@@ -557,7 +554,7 @@
         function updateProgressBar() {
             let progressPercent = ((currentSlide + 1) / images.length) * 100;
             progressBar.style.width = `${progressPercent}%`;
-            console.log(progressPercent)
+           
         }
 
         updateProgressBar();
