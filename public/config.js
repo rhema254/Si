@@ -1,6 +1,6 @@
 
 const config = {
-    apiUrl: 'https://sifafx-fb4596e93a3e.herokuapp.com' 
-    // apiUrl: 'http://localhost:5000' 
-
+    apiUrl: '_API_URL_' 
+    
 };
+export default config;
