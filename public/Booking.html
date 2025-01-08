@@ -392,13 +392,6 @@
         }
 
 
-        document.getElementById('myForm').addEventListener('submit', function(event) {
-        const checkboxes = document.querySelectorAll('input[name="services"]:checked');
-        if (checkboxes.length === 0) {
-            event.preventDefault(); // Prevent form submission
-            alert("Please select at least one service.");
-        }
-    });
 
 
 
