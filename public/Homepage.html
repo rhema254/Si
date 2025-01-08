@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-   
+
     <title>Revolutionize Your Trading with Sifafx</title>
     <link rel="apple-touch-icon" sizes="180x180" href="Assets/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon_io/favicon-32x32.png">
@@ -16,8 +16,10 @@
     <meta name="description" content="Explore cutting-edge automated trading solutions tailored for your success.">
     <link rel="shortcut icon" href="favicon.ico">
     <meta property="og:title" content="Revolutionize Your Trading with Sifafx">
-    <meta property="og:description" content="Explore cutting-edge automated trading solutions tailored for your success.">
-    <meta property="og:image:secure_url" content="https://res.cloudinary.com/dwaet6cyt/image/upload/v1736273830/Sifafx_image_ug5oh1.png">
+    <meta property="og:description"
+        content="Explore cutting-edge automated trading solutions tailored for your success.">
+    <meta property="og:image:secure_url"
+        content="https://res.cloudinary.com/dwaet6cyt/image/upload/v1736273830/Sifafx_image_ug5oh1.png">
     <meta property="og:image" content="https://res.cloudinary.com/dwaet6cyt/image/upload/v1736273655/logo_t3qzjl.png">
 
 
@@ -130,6 +132,23 @@
         .thumbnail.active {
             border: 2px solid white;
         }
+
+        .success-message {
+            top: 35rem;
+
+        }
+
+        .success-message1 {
+            top: 40rem;
+
+        }
+
+        .bxs-check-circle {
+            color: rgb(42, 150, 28);
+
+
+
+        }
     </style>
 </head>
 
@@ -201,8 +220,11 @@
         </div>
     </div>
 
-    <div class=" absolute bottom-2 success-message w-full bg-black " id="success-message">
-        <box-icon class='bx bxs-check-circle text-[#247da0] '>check-circle</box-icon>
+    <div class=" absolute success-message md:success-message1  w-4/5  h-10 bg-black z-50 p-2" id="success-message">
+        
+            <div class="check-div rounded-lg">
+                <i class='relative bx bxs-check-circle rounded-[50%] text-[25px] bg-white '></i>
+            </div>
     </div>
 
 
@@ -361,6 +383,8 @@
         </div>
     </div>
 
+
+
     <footer class="bg-black text-white max-h-xl h-2/4 p-5 grid grid-cols-1 items-center justify-center">
         <div class="flex flex-col items-center justify-center">
             <div class="flex flex-col md:flex-row md:justify-around md:items-center w-full max-w-4xl px-4 py-8 
@@ -412,7 +436,7 @@
         }
 
 
-       
+
 
         let currentSlide = 0;
         const images = [
@@ -421,7 +445,7 @@
             "Assets/image3.jpg"
         ];
         imageNO = images.length
-        
+
 
         function openModal(index) {
             currentSlide = index;
@@ -554,7 +578,7 @@
         function updateProgressBar() {
             let progressPercent = ((currentSlide + 1) / images.length) * 100;
             progressBar.style.width = `${progressPercent}%`;
-           
+
         }
 
         updateProgressBar();
@@ -613,19 +637,19 @@
         });
     </script>
 
-     <script>
+    <script>
 
         const successMessage = sessionStorage.getItem('formSuccessMessage');
         const successmessageElement = document.getElementById('success-message')
         if (successMessage) {
             // Display the success message in a div or alert box
-            
+
             successmessageElement.textContent = successMessage;
             successmessageElement.classList.remove('hidden')
-            
+
             // Clear the message from sessionStorage after displaying it
             sessionStorage.removeItem('formSuccessMessage');
-        }else{
+        } else {
             successmessageElement.classList.add('hidden')
         }
-        </script>
+    </script>
