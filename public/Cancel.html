@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+    <meta content="origin-when-cross-origin" name="referrer">
+       
+    <title>Sifafx|Cancel Appointment</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="Assets/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="Assets/favicon_io/site.webmanifest">
+    <link rel="canonical" href="https://www.sifafx.com/">
+    <meta http-equiv="Content-Language" content="en">
+    <meta content="origin-when-cross-origin" name="referrer">
+    <meta name="title" content="Sifafx | Cancel Appointment">
+    <meta name="description" content="Cancel your Appointment">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta property="og:title" content="Sifafx | Cancel Appointment">
+    <meta property="og:description"
+        content="Cancel your Appointment">
+    <meta property="og:image:secure_url"
+        content="https://res.cloudinary.com/dwaet6cyt/image/upload/v1736273830/Sifafx_image_ug5oh1.png">
+    <meta property="og:image" content="https://res.cloudinary.com/dwaet6cyt/image/upload/v1736273655/logo_t3qzjl.png">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+    <style>
+        body {
+            font-family: "Raleway", serif;
+
+        }
+
+        @keyframes comeUp {
+            from {
+                transform: translateY(200px);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+
+        .animation1 {
+            animation-name: comeUp;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            animation-fill-mode: forwards;
+        }
+
+        .animation1 .animate {
+            opacity: 0;
+        }
+
+
+    
+        .delay11 {
+            animation: comeUp .6s ease-in-out 0.4s;
+        }
+
+
+/* Spinner animation */
+.spinner {
+    border-width: 4px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+       
+</style>
+  
+</head>
+<body>
+
+    <nav class="fixed top-0 left-0 w-full bg-black py-7 px-4 z-50 lg:px-10">
+        <div class="flex justify-between items-center  space-x-7  ">
+            <!-- Logo -->
+            <div><a href="Homepage.html" class="text-white text-lg font-light">SifaFx</a></div>
+
+            <!-- Desktop Menu - Hidden on medium and small screens -->
+            <div class="hidden lg:flex space-x-6">
+                <a href="Homepage.html"
+                    class="text-white text-sm lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">Home</a>
+
+                <a href="#about"
+                    class="text-white text-sm lg:tracking-widest  font-light hover:underline underline-offset-8 decoration-2">About</a>
+                <a href="services.html"
+                    class="text-white text-sm lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">Services</a>
+                <a href="HowWeWork.html"
+                    class="text-white text-sm lg:tracking-widest font-light hover:underline underline-offset-8 decoration-2">How
+                    We Work</a>
+            </div>
+
+            <!-- Desktop Appointment Button - Hidden on medium and small screens -->
+            <a href="Booking.html"
+                class="hidden lg:flex border border-white py-2 px-2 text-white text-md font-light tracking-widest transition-colors duration-300 hover:bg-[#c19957] hover:text-black hover:border-transparent">
+                Book Appointment
+            </a>
+
+            <!-- Hamburger Menu - Visible only on medium and small screens -->
+            <button class="lg:hidden text-white text-2xl" onclick="toggleMenu()">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Full-screen Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-black bg-opacity-95 z-40 hidden">
+        <div class="flex flex-col relative items-start justify-start no-scroll h-full space-y-4 px-10 mt-20">
+            <a href="Homepage.html" class="text-white text-md font-light  border-b w-full pb-2">Home</a>
+            <a href="#about" class="text-white text-md font-light border-b w-full pb-2">About</a>
+            <a href="services.html" class="text-white text-md font border-b w-full pb-2">Services</a>
+            <a href="HowWeWork.html" class="text-white text-md font-light">How We Work</a>
+            <a href="Booking.html"
+                class=" w-full border border-white py-2 px-8 text-center text-white text-md font-light tracking-wider transition-colors duration-300 hover:bg-[#c19957] hover:text-black hover:border-transparent">
+                Book Appointment
+            </a>
+
+        </div>
+    </div>
+
+
+    <div class="relative text-left text-white h-[50vh] lg:h-[60vh] w-full " id="home">
+        <div class=" relative h-full w-full justify-items-center top-12 ">
+
+            <img src="Assets/hero_image.jpeg"
+                alt="Office interior with a large table and chairs, and a sofa in the background"
+                class="grayscale w-full h-full object-cover brightness-[65%] " />
+
+                <div class="flex w-full content p-6 absolute top-24 lg:top-28 lg:px-80 ">
+                    <h1
+                        class="text-[40px] text-center  font-light md:text-[56px] md:w-full md:text-center  lg:text-center lg:text-[4.5rem] mb-2.5 animation1 delay11 w-full lg:w-full ">
+                        Cancel Appointment
+                    </h1>
+                  
+                </div>
+           
+        </div>
+
+    </div>
+   
+    <section
+    class=" text-[#dbdbdb] bg-[#121414]  pb-8  pt-24 md:pt-28 lg:pt-12 lg:pb-12 px-4 sm:px-20 md:px-40 lg:px-72 ">
+    <div id="canceldata" class="w-full text-center mb-5 pt-16 tracking-wide px-3">
+       
+    </div>
+    
+    <div class="text-center">
+        <button type="submit" id="cancel-button" onclick="cancelBooking()"
+        class="hover:bg-[#c19957] w-4/7 lg:w-2/5 mt-4 text-white text-[16px] py-4 lg:py-3 px-8 border-2 border-[#c19957] tracking-widest">
+        Cancel Appointment 
+        
+    </button>
+</div>
+<div id="loading-overlay" class="hidden  bg-black bg-opacity-50 z-50 items-center justify-center">
+    <div class=" relative spinner border-4 border-t-[#c19957] border-white w-1 h-1 rounded-full animate-spin"></div>
+</div>
+
+</section>
+
+
+<footer class="bg-black text-white max-h-xl h-2/4 p-5 grid grid-cols-1 items-center justify-center">
+    <div class="flex flex-col items-center justify-center">
+        <div class="flex flex-col md:flex-row md:justify-around md:items-center w-full max-w-4xl px-4 py-8 
+        lg:justify-between">
+            <div class="text-center md:text-center mb-8 md:mb-0">
+                <h1 class="text-start text-lg tracking-widest ">Sifafx</h1>
+            </div>
+            <div class="text-start mb-8 md:mb-0">
+                <h1 class="text-xl mb-1">Location</h1>
+                <a href="https://maps.app.goo.gl/PZDb1RLe51Rx76e7A" class="underline underline-offset-4">Nairobi
+                    KE</a>
+            </div>
+            <div class="text-start md:text-right">
+                <h1 class="text-xl font-light tracking-wider mb-1">Reach out</h1>
+                <p><a href="mailto:admin@sifax.com" class="underline underline-offset-4">admin@sifafx.com</a></p>
+                <p><a href="tel:+254717820960" class="underline underline-offset-4">+254717829969</a></p>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+
+<script src="config.js"></script>
+<script src="cancel.js" ></script>
+
+
+    <script>
+
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        }
+
+
+   </script>
+    
+</body>
+</html>

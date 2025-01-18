@@ -259,8 +259,6 @@ const eveningSlots = [
     "11:30–12:00 am"
 ];
 
-const totalslots = morningSlots.length + afternoonSlots.length + eveningSlots.length
-
 
 let selectedButton = null;
 let selectedTime = selectedButton; // Track the currently selected button
@@ -360,9 +358,6 @@ function populateTimeSlots(headings, slots, divName) {
 
 
 
-populateTimeSlots(morningTitle, morningSlots.filter(isSlotValid), "morning");
-populateTimeSlots(afternoonTitle, afternoonSlots.filter(isSlotValid), "afternoon");
-populateTimeSlots(eveningTitle, eveningSlots.filter(isSlotValid), "evening");
 
 
 
@@ -385,28 +380,31 @@ function updateTimeSlots() {
     const isToday = selectedDate.toDateString() === today.toDateString(); // Check if the date is today
  
     const isTomorrow = selectedDate.toDateString() === new Date(today.getTime() + 24 * 60 * 60 * 1000).toDateString(); // Check if the date is tomorrow
-    const currentTime = today.getHours() * 60 + today.getMinutes(); // Current time in minutes
+    const presentTime = today.getHours() * 60 + today.getMinutes(); // Current time in minutes
     
     const inputsection = document.getElementById("input-section");
+    const timezoneSelectElement = document.getElementById("timezone")
 
     // Handle weekends
     if (dayOfWeek === 0 || dayOfWeek === 6) {
         inputsection.classList.add("hidden");
         no_availability.style.display = "block";
+        timezoneSelectElement.classList.add('hidden')
         return;
     } else {
         inputsection.classList.remove("hidden");
         no_availability.style.display = "none";
+        timezoneSelectElement.classList.remove('hidden')
     }
 
    
     // Populate timeslots based on the selected day
     if (isToday) {
         // Filter slots for today only
-        populateTimeSlots(morningTitle, morningSlots.filter((slot) => isSlotValid(slot, "today")), "morning");
-        populateTimeSlots(afternoonTitle, afternoonSlots.filter((slot) => isSlotValid(slot, "today")), "afternoon");
-        populateTimeSlots(eveningTitle, eveningSlots.filter((slot) => isSlotValid(slot, "today")), "evening");
-    } else if (isTomorrow && currentTime === '23') {
+        populateTimeSlots(morningTitle, morningSlots.filter(isSlotValid), "morning");
+        populateTimeSlots(afternoonTitle, afternoonSlots.filter(isSlotValid), "afternoon");
+        populateTimeSlots(eveningTitle, eveningSlots.filter(isSlotValid), "evening");
+    } else if (isToday && presentTime >= '1370') {
         // Populate tomorrow's slots (all valid since it's a new day)
         populateTimeSlots(morningTitle, morningSlots.filter((slot) => isSlotValid(slot, "tomorrow")), "morning");
         populateTimeSlots(afternoonTitle, afternoonSlots.filter((slot) => isSlotValid(slot, "tomorrow")), "afternoon");

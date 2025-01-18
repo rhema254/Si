@@ -93,23 +93,11 @@ function convertSingleTime(startTime, ampm) {
 
 
 
-
-
-
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent the form from refreshing the page
-
-
-
-
 
         //1. Capture Form data.
         const fullname = document.getElementById('fullname')
