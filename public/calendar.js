@@ -114,7 +114,7 @@ nextWeekElement.addEventListener('click', () => {
     updateWeekDisplay();
 });
 
-// Date selection handlers
+// Date selection a
 dayElements.forEach((dayElement) => {
     dayElement.addEventListener('click', () => {
         if (!dayElement.disabled) {
@@ -124,6 +124,8 @@ dayElements.forEach((dayElement) => {
 
             updateCurrentDateDisplay();
             updateWeekDisplay();
+            updateTimeSlots();
+
         }
     });
 });
@@ -132,6 +134,60 @@ dayElements.forEach((dayElement) => {
 updateCurrentDateDisplay();
 updateCurrentMonthDisplay();
 updateWeekDisplay();
+
+
+
+
+// ------------------------ Timeslots Updater ---------------------------------
+
+
+
+// Parses time string in 12-hour format to 24-hour format for comparison
+function parseTime(time) {
+    const [timePart, period] = time.split(' ');
+    const [hour, minute] = timePart.split(':');
+    let hourIn24 = parseInt(hour, 10);
+
+    // Convert to 24-hour format
+    if (period === 'pm' && hourIn24 !== 12) {
+        hourIn24 += 12; // Convert PM hours except for 12
+        
+    } else if (period === 'am' && hourIn24 === 12) {
+        hourIn24 = 0; // Convert 12 AM to 0 hours
+    }
+
+    return hourIn24 + (parseInt(minute, 10) / 60); // Return hours as a decimal (e.g., 1.5 for 1:30)
+}
+
+// Helper function to check if the time slot is valid
+function isSlotValid(slot) {
+
+
+    if (slot === '11:30-12:00 am') {
+        timeRange = '11:30-00:00';
+    } else if (slot === '11:30-12:00 pm') {
+        timeRange = '11:30-12:00';
+
+    }
+
+    let [timeRange, period] = slot.split(' ');
+    let [startTime, endTime] = timeRange.split('–').map(t => t.trim());
+
+
+    const startHour = parseTime(startTime + ' ' + period);
+
+    // Parse end time to get the hour in 24-hour format
+    let currentTime = new Date();
+    currentTime.setHours(currentTime.getHours() + 1); // Add one hour
+
+
+    const currentTimeIn24 = currentTime.getHours() + (currentTime.getMinutes() / 60); // Current time in decimal format
+    
+    return startHour > currentTimeIn24; // Return true if the slot is still valid
+}
+
+
+
 
 
 
@@ -145,7 +201,15 @@ const headings = ["Morning", "Afternoon", "Evening"]
 const morningTitle = headings[0]
 const afternoonTitle = headings[1]
 const eveningTitle = headings[2]
+
 const morningSlots = [
+    "12:00–12:30 am",
+    "12:30–1:00 am",
+    "1:00–1:30 am",
+    "1:30–2:00 am",
+    "2:00–2:30 am",
+    "2:30–3:00 am",
+    "3:00–3:30 am",
     "4:00–4:30 am",
     "4:30–5:00 am",
     "5:00–5:30 am",
@@ -161,7 +225,8 @@ const morningSlots = [
     "10:00–10:30 am",
     "10:30–11:00 am",
     "11:00–11:30 am",
-    "11:30–12:00 pm"
+    "11:30–12:00 am"
+
 ];
 
 const afternoonSlots = [
@@ -194,26 +259,51 @@ const eveningSlots = [
     "11:30–12:00 am"
 ];
 
-let selectedTime = null
+
+let selectedButton = null;
+let selectedTime = selectedButton; // Track the currently selected button
+
+let dateselected = selectedDate;
+
+const today = new Date();
+const no_availability = document.getElementById('no-availability');
+
+
 
 function updateSelectedTime(time) {
     selectedTime = time;
-    return time;
+    // Optional: Debugging
 }
 
-function populateTimeSlots(headings, slots, divName) {
-    const div = document.createElement("div");
-    div.classList.add(divName);
-    const p = document.createElement("p")
-    div.appendChild(p)
-    slots.forEach(slot => {
-        p.textContent = headings
-        const button = document.createElement("div");
 
-        const fulltime = slot;
-        const shortest = slot.split("–")[0];
-        const shorter = slot.split(" ")[1];
-        const shorttime = shortest + " " + shorter;
+
+
+function populateTimeSlots(headings, slots, divName) {
+    const filteredSlots = slots.filter(isSlotValid);
+    const div = document.createElement("div");
+    div.classList.add(divName, 'cursor-pointer');
+    const p = document.createElement("p");
+    div.appendChild(p);
+
+    p.textContent = headings;
+
+    slots.forEach(slot => {
+        const button = document.createElement("div");
+        let fulltime = slot;
+        let shortest = slot.split("–")[0];
+        let shorter = slot.split(" ")[1];
+
+        let shorttime = null
+
+        if (fulltime === '11:30–12:00 pm') {
+            shorttime = '11:30 am';
+        } else if (fulltime === '11:30–12:00 am') {
+            shorttime = '11:30 pm'
+            fulltime === '11:30–12:00 pm'
+        } else {
+            shorttime = shortest + " " + shorter;
+        }
+
 
 
 
@@ -247,22 +337,29 @@ function populateTimeSlots(headings, slots, divName) {
 
 
         button.addEventListener("click", () => {
-            // Handle button click: disable other buttons and store selected time
-            disableOtherButtons(button);
-            button.setAttribute(('data-set-time'), button.textContent)
-            button.getAttribute('data-set-time');
-            const time = button.getAttribute('data-set-time');
-            updateSelectedTime(time);
+            // Reset styles for previously selected button
+            if (selectedButton) {
+                selectedButton.classList.remove('bg-white', 'text-black');
+            }
 
+            // Update the selected button
+            selectedButton = button;
+
+            // Apply styles to the new selection
+            button.classList.add('bg-white', 'text-black');
+
+            // Update the selected time
+            updateSelectedTime(button.textContent);
         });
         div.appendChild(button);
     });
     timeSlotsDiv.appendChild(div);
 }
 
-populateTimeSlots(morningTitle, morningSlots, "morning");
-populateTimeSlots(afternoonTitle, afternoonSlots, "afternoon");
-populateTimeSlots(eveningTitle, eveningSlots, "evening");
+
+
+
+
 
 function disableOtherButtons(selectedButton) {
     const allButtons = document.querySelectorAll("#timeSlots div");
@@ -270,7 +367,59 @@ function disableOtherButtons(selectedButton) {
     allButtons.forEach(button => {
         if (button !== selectedButton) {
             button.disabled = true;
-          
+
         }
     });
 }
+
+function updateTimeSlots() {
+    // Clear existing timeslots
+    timeSlotsDiv.innerHTML = "";
+
+    const dayOfWeek = selectedDate.getDay(); // Get the day of the week (0 = Sunday, 6 = Saturday)
+    const isToday = selectedDate.toDateString() === today.toDateString(); // Check if the date is today
+ 
+    const isTomorrow = selectedDate.toDateString() === new Date(today.getTime() + 24 * 60 * 60 * 1000).toDateString(); // Check if the date is tomorrow
+    const presentTime = today.getHours() * 60 + today.getMinutes(); // Current time in minutes
+    
+    const inputsection = document.getElementById("input-section");
+    const timezoneSelectElement = document.getElementById("timezone")
+
+    // Handle weekends
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+        inputsection.classList.add("hidden");
+        no_availability.style.display = "block";
+        timezoneSelectElement.classList.add('hidden')
+        return;
+    } else {
+        inputsection.classList.remove("hidden");
+        no_availability.style.display = "none";
+        timezoneSelectElement.classList.remove('hidden')
+    }
+
+   
+    // Populate timeslots based on the selected day
+    if (isToday) {
+        // Filter slots for today only
+        populateTimeSlots(morningTitle, morningSlots.filter(isSlotValid), "morning");
+        populateTimeSlots(afternoonTitle, afternoonSlots.filter(isSlotValid), "afternoon");
+        populateTimeSlots(eveningTitle, eveningSlots.filter(isSlotValid), "evening");
+    } else if (isToday && presentTime >= '1370') {
+        // Populate tomorrow's slots (all valid since it's a new day)
+        populateTimeSlots(morningTitle, morningSlots.filter((slot) => isSlotValid(slot, "tomorrow")), "morning");
+        populateTimeSlots(afternoonTitle, afternoonSlots.filter((slot) => isSlotValid(slot, "tomorrow")), "afternoon");
+        populateTimeSlots(eveningTitle, eveningSlots.filter((slot) => isSlotValid(slot, "tomorrow")), "evening");
+    } else {
+        // For future weekdays, populate all slots without filtering
+        populateTimeSlots(morningTitle, morningSlots, "morning");
+        populateTimeSlots(afternoonTitle, afternoonSlots, "afternoon");
+        populateTimeSlots(eveningTitle, eveningSlots, "evening");
+    }
+}
+
+// Trigger `updateTimeSlots` when the date changes
+document.getElementById("day-elements").addEventListener("change", (event) => {
+    selectedDate = new Date(event.target.value); // Update the selected date
+    updateTimeSlots(); // Update the timeslots
+});
+

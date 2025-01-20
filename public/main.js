@@ -1,14 +1,17 @@
+
+const apiUrl = config.apiUrl;
+
 /* 
     Functions here:
     1. Populating the dropdown using list in timezone.js
     2. Getting the currentSelectedTimezone from the dropdown.
     3. Getting the date, time and heading selection.
     4. An event listener to update selected time
-*/ 
-
+*/
 
 
 // Populate the dropdown
+
 const timezoneSelect = document.getElementById('timezone');
 
 timezones.forEach((timezone) => {
@@ -24,7 +27,7 @@ timezones.forEach((timezone) => {
 function getCurrentSelectedTimezone() {
     let timezonefield = document.getElementById('timezonefield');
     timezonefield = timezoneSelect.value;
-    console.log(timezonefield)  
+
     return timezoneSelect.value;
 }
 
@@ -34,13 +37,59 @@ const currentSelection = getCurrentSelectedTimezone();
 // Add an event listener to update the value when the selection changes
 timezoneSelect.addEventListener('change', () => {
     const selectedTimezone = timezoneSelect.value;
+
     getCurrentSelectedTimezone();
 });
 
 
- 
 
-        
+
+
+// Function to convert short or long time formats into 24-hour format
+function convertTo24HourFormat(inputTime) {
+    const timeHyphen = "–";
+    let resultTime = null;
+
+    try {
+        if (inputTime.length >= 9) {
+            // Long time format (e.g., "10:00-11:30 am")
+            let startTime = inputTime.split("–")[0];
+            let ampm = inputTime.split(" ")[1];
+
+            const start24 = convertSingleTime(startTime, ampm);
+            resultTime = `${start24}`;
+        } else {
+            // Short time format (e.g., "10:00 am")
+            let startTime = inputTime.split(" ")[0];
+            let ampm = inputTime.split(" ")[1];
+            resultTime = convertSingleTime(startTime, ampm);
+        }
+
+        return resultTime;
+    } catch (error){
+        console.error("Error converting time to 24-hour format:", error);
+
+        alert("Please select a valid time.");
+
+    }
+
+}
+
+// Helper function to convert a single time (e.g. 10:00 am) into 24-hour format
+function convertSingleTime(startTime, ampm) {
+    let [hours, minutes] = startTime.split(":").map(Number);
+
+
+    if (ampm.toLowerCase() === "pm" && hours !== 12) {
+        hours += 12;
+    } else if (ampm.toLowerCase() === "am" && hours === 12) {
+        hours = 0;
+    }
+
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:00`;
+}
+
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -49,44 +98,54 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent the form from refreshing the page
 
-         
         //1. Capture Form data.
         const fullname = document.getElementById('fullname')
-        const email = form.querySelector('input[type="email"]').value;
-        const phoneInput = document.getElementById('phoneInput');
-        const form_message = document.getElementById('message');
-        const message = form_message.value
-        const date = selectedDate.toLocaleDateString(('en-us'), { year: "numeric" , month:"2-digit", day: '2-digit',});
+        const name = fullname.value;
 
-        const  name = fullname.value;
+        const email = form.querySelector('input[type="email"]').value;
+
+        const phoneInput = document.getElementById('phoneInput');
         const phone = phoneInput.value;
 
-        const time = selectedTime;
-        console.log("seleected time: "+time)
+        const form_message = document.getElementById('description');
+        const description = form_message.value;
+
+        const date1 = selectedDate.toLocaleDateString(('en-us'), { year: "numeric", day: '2-digit', month: "2-digit" });
+        //  [2] - year, [1] - day, [0] - month
+        const date = date1.split("/", 3)[2] + "-" + date1.split('/', 3)[0] + "-" + date1.split("/", 3)[1]
+
+
+
+        let initialTime = selectedTime;
+
+        const time = convertTo24HourFormat(initialTime);
         
-        
-        const services = Array.from(form.querySelectorAll('input[type="checkbox"]:checked'))
+
+        const servicesArray = Array.from(form.querySelectorAll('input[type="checkbox"]:checked'))
             .map((checkbox) => checkbox.value);
+       
+        const servicesObject = {
+            services: servicesArray // Structure the services as an object
+        };
         const currentSelection = getCurrentSelectedTimezone();
         const timezone = currentSelection;
-        
-        //2. Create a JSON object
+
         const formData = {
-            name: name,
+            fullname: name,
             email: email,
             phone: phone,
-            timezone:timezone,
-            date :date,
-            time:time,
-            services:services,
-            description: message,
+            timezone: timezone,
+            date: date,
+            time: time,
+            services: servicesObject,
+            description: description,
         };
 
-        console.log('Form Data:', formData); // For debugging
+        // console.log('Form Data:', formData); 
 
         try {
-            //3. Send data to the backend
-            const response = await fetch('/submit-form', { // Update '/submit-form' with your backend endpoint
+            //3. Sending data to the backend
+            const response = await fetch(`${apiUrl}/submit`, { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -95,7 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                alert('Form submitted successfully!');
+                sessionStorage.setItem('formSuccessMessage', 'Thank you for your information. We received your response and emailed you a copy');
+
+                // Redirect to the homepage after a small delay (optional for smoother transition)
+                setTimeout(() => {
+                    window.location.href = 'Homepage.html';
+                }, 1500); //   
             } else {
                 alert('Failed to submit the form. Please try again.');
             }
@@ -105,4 +169,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
