@@ -69,14 +69,13 @@ function convertTo24HourFormat(inputTime) {
     } catch (error){
         console.error("Error converting time to 24-hour format:", error);
 
-        // Display an alert to the user
         alert("Please select a valid time.");
 
     }
 
 }
 
-// Helper function to convert a single time (e.g., "10:00 am") into 24-hour format
+// Helper function to convert a single time (e.g. 10:00 am) into 24-hour format
 function convertSingleTime(startTime, ampm) {
     let [hours, minutes] = startTime.split(":").map(Number);
 
@@ -131,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentSelection = getCurrentSelectedTimezone();
         const timezone = currentSelection;
 
-        // 2. Create a JSON object
         const formData = {
             fullname: name,
             email: email,
@@ -143,11 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
             description: description,
         };
 
-        // console.log('Form Data:', formData); // For debugging
+        // console.log('Form Data:', formData); 
 
         try {
-            //3. Send data to the backend
-            const response = await fetch(`${apiUrl}/submit`, { // Update '/submit-form' with your backend endpoint
+            //3. Sending data to the backend
+            const response = await fetch(`${apiUrl}/submit`, { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
